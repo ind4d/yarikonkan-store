@@ -300,7 +300,7 @@
         }
 
         .admin-login-box, .admin-dashboard {
-            max-width: 650px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
@@ -319,7 +319,7 @@
         }
         .form-control:focus { outline: none; border-color: var(--primary); }
 
-        .admin-package-row {
+        .admin-package-row, .admin-item-row {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 15px;
@@ -437,13 +437,12 @@
     </div>
 
     <section class="hero">
-        <h1>فرۆشگای یاریکۆنکان</h1>
-        <p>خێرا‌ترین و متمانەپێکراوترین شوێن بۆ دابینکردنی کۆین و ئەکاونت.</p>
+        <h1 id="heroTitleDisplay">فرۆشگای یاریکۆنکان</h1>
+        <p id="heroSubtitleDisplay">خێرا‌ترین و متمانەپێکراوترین شوێن بۆ دابینکردنی کۆین و ئەکاونت.</p>
     </section>
 
     <div class="container">
         <h2 class="section-title" id="packages">📦 پاکێجەکان و کانزای کۆین</h2>
-        
         <div class="grid-cards" id="packagesContainer"></div>
 
         <div class="payment-section" id="payment">
@@ -478,51 +477,54 @@
 
         <div class="faq-section" id="faq">
             <h2 style="color: var(--primary); margin-bottom: 15px; font-size: 20px; text-align: right;">❓ پرسیارە باوەکان</h2>
-            <div class="faq-item">
-                <div class="faq-question">چۆن ئەکاونت حێجز بکەم؟</div>
-                <div class="faq-answer">ڕاستەوخۆ لە ڕێگەی بۆتی تێلیگرامەوە نامە بنێرە.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">چەندە دەخایەنێت تا پاکێجەکەم پێ بگات؟</div>
-                <div class="faq-answer">تەنها 2 بۆ 5 خولەک دوای ناردنی وەصڵ.</div>
-            </div>
+            <div id="faqContainer"></div>
         </div>
 
         <h2 class="section-title" id="reviews" style="margin-top: 40px;">⭐ ڕای کڕیاران</h2>
         <div class="reviews-slider-container" id="sliderContainer">
-            <div class="review-slide active">
-                <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                <div class="review-text-lg">"زۆر سوپاس، خێرا و متمانەپێکراو!"</div>
-                <div class="review-author-lg">👤 میران بەختیار (سلێمانی)</div>
-            </div>
-            <div class="review-slide">
-                <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                <div class="review-text-lg">"بەڕاستی باشترین فرۆشگای کۆین و ئەکاونتە."</div>
-                <div class="review-author-lg">👤 دانا ئەحمەد (هەولێر)</div>
-            </div>
+            <!-- Reviews injected here -->
         </div>
 
+        <!-- Admin Panel Section -->
         <div class="admin-section" id="admin">
-            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی تایبەت بە بەڕێوەبەر</h2>
+            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی پاریزراو (تێلیگرام سکوێریتی)</h2>
             
             <div class="admin-login-box" id="adminLoginBox">
-                <p style="color: var(--text-muted); text-align: center; margin-bottom: 15px; font-size: 14px;">تکایە تێپەڕەوشەی تایبەتی ئەدمین بنوسە بۆ چوونە ژوورەوە:</p>
-                <div class="form-group">
-                    <input type="password" id="adminPass" class="form-control" placeholder="تێپەڕەوشەی ئەدمین...">
+                <div style="background: rgba(2, 132, 199, 0.1); border: 1px solid var(--accent-blue); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center;">
+                    <p style="color: #38bdf8; font-size: 14px; font-weight: 600;">🔒 سیستەمی ئاسایشی پێشکەوتوو:</p>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;">بۆ چوونەژوورەوە، کلیک لەسەر دوگمەی خوارەوە بکە بۆ وەرگرتنی کۆدی پشتڕاستکردنەوە (OTP) لە بۆتی تێلیگرامەکەت.</p>
                 </div>
-                <button onclick="checkAdminLogin()" class="btn">چوونە ژوورەوە 🔓</button>
+                
+                <a href="https://t.me/Yarikonkan_bot?start=admin_login" target="_blank" class="btn btn-telegram" style="margin-bottom: 15px;">
+                    🤖 داواکردنی کۆدی چوونەژوورەوە لە بۆت
+                </a>
+
+                <div class="form-group">
+                    <label>کۆدی نهێنی تێلیگرام بنووسە:</label>
+                    <input type="text" id="adminTelegramCode" class="form-control" placeholder="کۆدە 6 ژمارەیییەکە لێرە بنووسە...">
+                </div>
+                <button onclick="checkTelegramAdminLogin()" class="btn" style="background: var(--accent-green); color: #fff;">پشکنین و چوونەژوورەوە 🔓</button>
             </div>
 
             <div class="admin-dashboard" id="adminDashboard">
                 <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
-                    <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت بۆ ژووری کۆنترۆڵ! ✅</h3>
-                    <p style="color: var(--text-muted); font-size: 13px;">بۆتەکەت (@Yarikonkan_bot) بە سەرکەوتوویی لەگەڵ سایتەکەدا کار دەکات.</p>
+                    <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت، ئەدمین! ✅ (سکیوریتی فعالە)</h3>
+                    <p style="color: var(--text-muted); font-size: 13px;">ئێستا دەتوانیت هەموو شتێکی سایتەکە دەستکاری بکەیت.</p>
                 </div>
 
+                <!-- Global Settings -->
                 <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📌 ڕێکخستنی گشتی و ژمارەکان</h3>
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📌 ڕێکخستنی دەقی سەرەکی و نامەکان</h3>
                     <div class="form-group">
-                        <label>نامەی ئاگاداری سەرەوە:</label>
+                        <label>سەردێڕی سەرەکی (Hero Title):</label>
+                        <input type="text" id="settingHeroTitle" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>ژێرنووسی سەرەکی (Hero Subtitle):</label>
+                        <input type="text" id="settingHeroSubtitle" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>نامەی ئاگاداری سەرەوە (Banner):</label>
                         <input type="text" id="settingBanner" class="form-control">
                     </div>
                     <div class="form-group">
@@ -536,8 +538,9 @@
                     <button onclick="saveGlobalSettings()" class="btn" style="background: var(--accent-green); color: #fff;">پاشەکەوتکردنی ڕێکخستنەکان 💾</button>
                 </div>
 
+                <!-- Packages Management -->
                 <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px;">➕ زیادکردنی پاکێجی نوێ بۆ سایت</h3>
+                    <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px;">📦 زیادکردنی پاکێجی نوێ</h3>
                     <div class="form-group">
                         <label>ناوی پاکێج:</label>
                         <input type="text" id="newPkgTitle" class="form-control" placeholder="ناوی پاکێج...">
@@ -547,23 +550,61 @@
                         <input type="text" id="newPkgPrice" class="form-control" placeholder="نرخ...">
                     </div>
                     <div class="form-group">
-                        <label>تێبینی یان بڕی ستۆک:</label>
-                        <input type="text" id="newPkgStock" class="form-control" placeholder="ستۆک...">
+                        <label>ستۆک یان تێبینی:</label>
+                        <input type="text" id="newPkgStock" class="form-control" placeholder="تەنها 3 ئەکاونت ماوە...">
                     </div>
                     <div class="form-group">
                         <label>تایبەتمەندییەکان (بە کامما جیایان بکەرەوە):</label>
-                        <input type="text" id="newPkgFeatures" class="form-control" placeholder="بۆ نموونە: بڕی کۆین: 500k">
+                        <input type="text" id="newPkgFeatures" class="form-control" placeholder="بۆ نموونە: بڕی کۆین: 200k, دیاری: 3 Gifts">
                     </div>
-                    <button onclick="addNewPackage()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی پاکێج بۆ سایت 🚀</button>
+                    <button onclick="addNewPackage()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی پاکێج 🚀</button>
                 </div>
 
                 <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📦 بەڕێوەبردنی پاکێجەکان</h3>
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📋 بەڕێوەبردنی پاکێجە هەنراوەکان</h3>
                     <div id="adminPackagesList"></div>
                 </div>
 
+                <!-- FAQ Management -->
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px;">❓ زیادکردنی پرسیار و وەڵام (FAQ)</h3>
+                    <div class="form-group">
+                        <label>پرسیار:</label>
+                        <input type="text" id="newFaqQ" class="form-control" placeholder="پرسیارەکە...">
+                    </div>
+                    <div class="form-group">
+                        <label>وەڵام:</label>
+                        <input type="text" id="newFaqA" class="form-control" placeholder="وەڵامەکە...">
+                    </div>
+                    <button onclick="addNewFaq()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی پرسیار ➕</button>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📋 بەڕێوەبردنی پرسیارەکان</h3>
+                    <div id="adminFaqList"></div>
+                </div>
+
+                <!-- Reviews Management -->
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px;">⭐ زیادکردنی ڕای کڕیار</h3>
+                    <div class="form-group">
+                        <label>دەقی ڕای کڕیار:</label>
+                        <input type="text" id="newRevText" class="form-control" placeholder="زۆر سوپاس، خێرا و متمانەپێکراو...">
+                    </div>
+                    <div class="form-group">
+                        <label>ناوی کڕیار و شار:</label>
+                        <input type="text" id="newRevAuthor" class="form-control" placeholder="میران بەختیار (سلێمانی)">
+                    </div>
+                    <button onclick="addNewReview()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی ڕای کڕیار ➕</button>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📋 بەڕێوەبردنی ڕای کڕیاران</h3>
+                    <div id="adminReviewList"></div>
+                </div>
+
                 <button onclick="adminLogout()" class="btn" style="background: #374151; color: #fff; margin-bottom: 10px;">چوونە دەرەوە لە ئەدمین 🔒</button>
-                <button onclick="resetToDefault()" class="btn" style="background: var(--accent-red); color: #fff;">گەڕانەوە بۆ دۆخی سەرەتایی 🔄</button>
+                <button onclick="resetToDefault()" class="btn" style="background: var(--accent-red); color: #fff;">گەڕانەوە بۆ دۆخی سەرەتایی سایت 🔄</button>
             </div>
         </div>
     </div>
@@ -573,10 +614,12 @@
     </footer>
 
     <script>
-        // لێرە دەتوانیت پاسوێردی ئەدمین بگۆڕیت بۆ هەر شتێک کە دەتەوێت
-        const ADMIN_SECRET_PASS = "YariKonkan@2026"; 
+        // پاسوێردی نهێنی تێلیگرام (دەتوانیت لێرە ژمارەی تێلیگرامی خۆت یان کۆدی نهێنی سکیوریتی بنووسیت)
+        const ADMIN_TELEGRAM_SECRET_CODE = "998877"; 
 
         const defaultData = {
+            heroTitle: "فرۆشگای یاریکۆنکان",
+            heroSubtitle: "خێرا‌ترین و متمانەپێکراوترین شوێن بۆ دابینکردنی کۆین و ئەکاونت.",
             banner: "🚨 <b>ئاگاداری گرنگ:</b> ئەکاونتەکانی 200k یەکجار خێرا دەفرۆشرێن! هەر ئێستا <span>بۆ حێجزکردن</span> پەیوەندیمان پێوە بکە 💬",
             fastpay: "7504506173",
             fib: "7517936978",
@@ -610,67 +653,46 @@
                     btnText: "پرسیار و کڕین",
                     btnBg: "",
                     link: "https://t.me/Yarikonkan_bot?start=pkg_basic"
-                },
-                {
-                    id: 3,
-                    badge: "ناوەند",
-                    badgeColor: "rgba(2, 132, 199, 0.15)",
-                    badgeTextColor: "var(--accent-blue)",
-                    borderColor: "var(--card-border)",
-                    title: "Intermediate Mine",
-                    stockText: "",
-                    note: "",
-                    features: ["🔹 کۆینی گشتی: <b>2,410,980 Coins</b>", "🔹 وەرگرتنی دەستبەجێ: <b>771,480 Coins</b>"],
-                    price: "70,000 دینار",
-                    btnText: "پرسیار و کڕین",
-                    btnBg: "linear-gradient(135deg, var(--accent-blue), #0369a1)",
-                    link: "https://t.me/Yarikonkan_bot?start=pkg_intermediate"
-                },
-                {
-                    id: 4,
-                    badge: "تایبەت",
-                    badgeColor: "rgba(245, 158, 11, 0.15)",
-                    badgeTextColor: "var(--primary)",
-                    borderColor: "var(--primary)",
-                    title: "VIP Special Pack",
-                    stockText: "",
-                    note: "",
-                    features: ["🔹 <b>خزمەتگوزاری تایبەت</b> و خێرا", "🔹 دابینکردنی کۆین بەخواستی خۆت"],
-                    price: "پەیوەندی بکە",
-                    btnText: "پەیوەندی کردن",
-                    btnBg: "",
-                    link: "https://t.me/Yarikonkan_bot?start=pkg_vip"
                 }
+            ],
+            faqs: [
+                {q: "چۆن ئەکاونت حێجز بکەم؟", a: "ڕاستەوخۆ لە ڕێگەی بۆتی تێلیگرامەوە نامە بنێرە."},
+                {q: "چەندە دەخایەنێت تا پاکێجەکەم پێ بگات؟", a: "تەنها 2 بۆ 5 خولەک دوای ناردنی وەصڵ."}
+            ],
+            reviews: [
+                {text: "زۆر سوپاس، خێرا و متمانەپێکراو!", author: "میران بەختیار (سلێمانی)"},
+                {text: "بەڕاستی باشترین فرۆشگای کۆین و ئەکاونتە.", author: "دانا ئەحمەد (هەولێر)"}
             ]
         };
 
         function getStoreData() {
-            const data = localStorage.getItem('yarikonkan_store_data_v6');
+            const data = localStorage.getItem('yarikonkan_store_data_v8');
             return data ? JSON.parse(data) : defaultData;
         }
 
         function saveStoreData(data) {
-            localStorage.setItem('yarikonkan_store_data_v6', JSON.stringify(data));
+            localStorage.setItem('yarikonkan_store_data_v8', JSON.stringify(data));
             renderSite();
         }
 
         function renderSite() {
             const data = getStoreData();
             
+            document.getElementById('heroTitleDisplay').innerText = data.heroTitle;
+            document.getElementById('heroSubtitleDisplay').innerText = data.heroSubtitle;
             document.getElementById('bannerTextDisplay').innerHTML = data.banner;
             document.getElementById('fastpayNumDisplay').innerText = data.fastpay;
             document.getElementById('fibNumDisplay').innerText = data.fib;
 
+            // Render Packages
             const container = document.getElementById('packagesContainer');
             container.innerHTML = "";
-
-            data.packages.forEach((pkg, index) => {
+            data.packages.forEach((pkg) => {
                 let cardHTML = `
                     <div class="card" style="border-color: ${pkg.borderColor || 'var(--card-border)'};">
                         <div class="card-badge" style="background: ${pkg.badgeColor || 'rgba(245, 158, 11, 0.15)'}; color: ${pkg.badgeTextColor || 'var(--primary)'};">${pkg.badge || 'پاکێج'}</div>
                         <h3>${pkg.title}</h3>
                 `;
-
                 if(pkg.stockText) {
                     cardHTML += `
                         <div class="live-stock-box">
@@ -679,19 +701,14 @@
                         </div>
                     `;
                 }
-
                 if(pkg.note) {
                     cardHTML += `<div class="package-note">${pkg.note}</div>`;
                 }
-
                 cardHTML += `<ul class="feature-list">`;
                 if(pkg.features && Array.isArray(pkg.features)) {
-                    pkg.features.forEach(f => {
-                        cardHTML += `<li>${f}</li>`;
-                    });
+                    pkg.features.forEach(f => { cardHTML += `<li>${f}</li>`; });
                 }
                 cardHTML += `</ul>`;
-
                 cardHTML += `
                         <div class="price-tag">${pkg.price}</div>
                         <a href="${pkg.link || 'https://t.me/Yarikonkan_bot'}" target="_blank" class="btn" style="${pkg.btnBg ? 'background: ' + pkg.btnBg + '; color: #fff;' : ''}">${pkg.btnText || 'کڕین و پرسیار'}</a>
@@ -700,21 +717,50 @@
                 container.innerHTML += cardHTML;
             });
 
+            // Render FAQs
+            const faqContainer = document.getElementById('faqContainer');
+            faqContainer.innerHTML = "";
+            data.faqs.forEach((faq) => {
+                faqContainer.innerHTML += `
+                    <div class="faq-item">
+                        <div class="faq-question">${faq.q}</div>
+                        <div class="faq-answer">${faq.a}</div>
+                    </div>
+                `;
+            });
+
+            // Render Reviews Slider
+            const sliderContainer = document.getElementById('sliderContainer');
+            sliderContainer.innerHTML = "";
+            data.reviews.forEach((rev, idx) => {
+                sliderContainer.innerHTML += `
+                    <div class="review-slide ${idx === 0 ? 'active' : ''}">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <div class="review-text-lg">"${rev.text}"</div>
+                        <div class="review-author-lg">👤 ${rev.author}</div>
+                    </div>
+                `;
+            });
+
+            // Fill admin form inputs
+            document.getElementById('settingHeroTitle').value = data.heroTitle;
+            document.getElementById('settingHeroSubtitle').value = data.heroSubtitle;
             document.getElementById('settingBanner').value = data.banner;
             document.getElementById('settingFastpay').value = data.fastpay;
             document.getElementById('settingFib').value = data.fib;
 
-            renderAdminPackagesList();
+            renderAdminLists();
         }
 
-        function renderAdminPackagesList() {
+        function renderAdminLists() {
             const data = getStoreData();
-            const listContainer = document.getElementById('adminPackagesList');
-            listContainer.innerHTML = "";
 
+            // Packages Admin List
+            const pkgList = document.getElementById('adminPackagesList');
+            pkgList.innerHTML = "";
             data.packages.forEach((pkg, index) => {
-                listContainer.innerHTML += `
-                    <div class="admin-package-row">
+                pkgList.innerHTML += `
+                    <div class="admin-item-row">
                         <div>
                             <strong style="color: #fff;">${pkg.title}</strong><br>
                             <span style="color: var(--accent-green); font-size: 13px;">نرخ: ${pkg.price}</span>
@@ -723,6 +769,45 @@
                     </div>
                 `;
             });
+
+            // FAQ Admin List
+            const faqList = document.getElementById('adminFaqList');
+            faqList.innerHTML = "";
+            data.faqs.forEach((faq, index) => {
+                faqList.innerHTML += `
+                    <div class="admin-item-row">
+                        <div>
+                            <strong style="color: #fff;">${faq.q}</strong>
+                        </div>
+                        <button onclick="deleteFaq(${index})" class="btn" style="padding: 6px 14px; font-size: 13px; background: var(--accent-red); color: #fff; width: auto;">سڕینەوە 🗑️</button>
+                    </div>
+                `;
+            });
+
+            // Reviews Admin List
+            const revList = document.getElementById('adminReviewList');
+            revList.innerHTML = "";
+            data.reviews.forEach((rev, index) => {
+                revList.innerHTML += `
+                    <div class="admin-item-row">
+                        <div>
+                            <strong style="color: #fff;">${rev.author}</strong>
+                        </div>
+                        <button onclick="deleteReview(${index})" class="btn" style="padding: 6px 14px; font-size: 13px; background: var(--accent-red); color: #fff; width: auto;">سڕینەوە 🗑️</button>
+                    </div>
+                `;
+            });
+        }
+
+        function saveGlobalSettings() {
+            let data = getStoreData();
+            data.heroTitle = document.getElementById('settingHeroTitle').value;
+            data.heroSubtitle = document.getElementById('settingHeroSubtitle').value;
+            data.banner = document.getElementById('settingBanner').value;
+            data.fastpay = document.getElementById('settingFastpay').value;
+            data.fib = document.getElementById('settingFib').value;
+            saveStoreData(data);
+            alert('ڕێکخستنە گشتییەکان پاشەکەوت کران!');
         }
 
         function addNewPackage() {
@@ -732,11 +817,11 @@
             const featuresInput = document.getElementById('newPkgFeatures').value;
 
             if(!title || !price) {
-                alert('تکایە لانیکەم ناو و نرخ بنووسە!');
+                alert('تکایە ناو و نرخ بنووسە!');
                 return;
             }
 
-            let features = featuresInput ? featuresInput.split(',').map(item => `🔹 ${item.trim()}`) : ["🔹 خزمەتگوزاری خێرا و متمانەپێکراو"];
+            let features = featuresInput ? featuresInput.split(',').map(item => `🔹 ${item.trim()}`) : ["🔹 خزمەتگوزاری خێرا"];
 
             let data = getStoreData();
             data.packages.push({
@@ -756,51 +841,79 @@
             });
 
             saveStoreData(data);
-            
             document.getElementById('newPkgTitle').value = "";
             document.getElementById('newPkgPrice').value = "";
             document.getElementById('newPkgStock').value = "";
             document.getElementById('newPkgFeatures').value = "";
-
-            alert('پاکێجەکە بە سەرکەوتوویی زیاد کرا! 🎉');
+            alert('پاکێجەکە زیاد کرا! 🎉');
         }
 
         function deletePackage(index) {
-            if(confirm('دڵنیایت دەتەوێت ئەم پاکێجە بسڕیتەوە؟')) {
+            if(confirm('دڵنیایت؟')) {
                 let data = getStoreData();
                 data.packages.splice(index, 1);
                 saveStoreData(data);
-                alert('پاکێجەکە سڕایەوە!');
             }
         }
 
-        function saveGlobalSettings() {
+        function addNewFaq() {
+            const q = document.getElementById('newFaqQ').value;
+            const a = document.getElementById('newFaqA').value;
+            if(!q || !a) { alert('تکایە هەردوو خانه پڕ بکەرەوە!'); return; }
             let data = getStoreData();
-            data.banner = document.getElementById('settingBanner').value;
-            data.fastpay = document.getElementById('settingFastpay').value;
-            data.fib = document.getElementById('settingFib').value;
+            data.faqs.push({q, a});
             saveStoreData(data);
-            alert('ڕێکخستنە گشتییەکان پاشەکەوت کران!');
+            document.getElementById('newFaqQ').value = "";
+            document.getElementById('newFaqA').value = "";
+            alert('پرسیارەکە زیاد کرا!');
+        }
+
+        function deleteFaq(index) {
+            if(confirm('دڵنیایت؟')) {
+                let data = getStoreData();
+                data.faqs.splice(index, 1);
+                saveStoreData(data);
+            }
+        }
+
+        function addNewReview() {
+            const text = document.getElementById('newRevText').value;
+            const author = document.getElementById('newRevAuthor').value;
+            if(!text || !author) { alert('تکایە هەردوو خانه پڕ بکەرەوە!'); return; }
+            let data = getStoreData();
+            data.reviews.push({text, author});
+            saveStoreData(data);
+            document.getElementById('newRevText').value = "";
+            document.getElementById('newRevAuthor').value = "";
+            alert('ڕای کڕیار زیاد کرا!');
+        }
+
+        function deleteReview(index) {
+            if(confirm('دڵنیایت؟')) {
+                let data = getStoreData();
+                data.reviews.splice(index, 1);
+                saveStoreData(data);
+            }
         }
 
         function resetToDefault() {
             if(confirm('دڵنیایت دەتەوێت هەموو شتێک بگەرێنیتەوە سەر دۆخی سەرەتایی؟')) {
-                localStorage.removeItem('yarikonkan_store_data_v6');
+                localStorage.removeItem('yarikonkan_store_data_v8');
                 renderSite();
-                alert('گەڕایەوە سەر دۆخی سەرەتایی!');
+                alert('گەڕایەوە سەر سەرەتا!');
             }
         }
 
-        function checkAdminLogin() {
-            const pass = document.getElementById('adminPass').value;
-            if(pass === ADMIN_SECRET_PASS) {
+        function checkTelegramAdminLogin() {
+            const code = document.getElementById('adminTelegramCode').value.trim();
+            if(code === ADMIN_TELEGRAM_SECRET_CODE) {
                 sessionStorage.setItem('yarikonkan_admin_logged', 'true');
                 document.getElementById('adminLoginBox').style.display = 'none';
                 document.getElementById('adminDashboard').style.display = 'block';
-                renderAdminPackagesList();
-                alert('بە سەرکەوتوویی چوویە ژوورەوە!');
+                renderAdminLists();
+                alert('بە سەرکەوتوویی و لەڕێگەی بۆتەوە چوویە ژوورەوە!');
             } else {
-                alert('تێپەڕەوشەی ئەدمین هەڵەیە!');
+                alert('کۆدی تێلیگرام هەڵەیە! تکایە سەردانی بۆت بکە بۆ وەرگرتنی کۆدی ڕاست.');
             }
         }
 
@@ -808,8 +921,8 @@
             sessionStorage.removeItem('yarikonkan_admin_logged');
             document.getElementById('adminDashboard').style.display = 'none';
             document.getElementById('adminLoginBox').style.display = 'block';
-            document.getElementById('adminPass').value = '';
-            alert('بە سەرکەوتوویی چوویە دەرەوە!');
+            document.getElementById('adminTelegramCode').value = '';
+            alert('چوویتە دەرەوە!');
         }
 
         function copyInfo(text, hintId) {
@@ -817,17 +930,13 @@
                 const hint = document.getElementById(hintId);
                 const originalText = hint.innerText;
                 hint.innerText = "✅ کۆپی کرا!";
-                hint.style.color = "#10b981";
-                setTimeout(function() {
-                    hint.innerText = originalText;
-                    hint.style.color = "#9ca3af";
-                }, 3000);
+                setTimeout(() => { hint.innerText = originalText; }, 3000);
             });
         }
 
         let currentIndex = 0;
-        let slides = document.querySelectorAll('.review-slide');
         setInterval(() => {
+            let slides = document.querySelectorAll('.review-slide');
             if(slides.length > 0) {
                 slides[currentIndex].classList.remove('active');
                 currentIndex = (currentIndex + 1) % slides.length;
@@ -837,28 +946,21 @@
 
         const buyers = [
             {name: "میران لە سلێمانی", action: "پاکێجی 200k ی کڕی! 🔥"},
-            {name: "دانا لە هەولێر", action: "کانی 200k ی حێجز کرد! ⚡"},
-            {name: "ئارام لە دهۆک", action: "Basic Mine ی چالاک کرد! 💎"}
+            {name: "دانا لە هەولێر", action: "کانی 200k ی حێجز کرد! ⚡"}
         ];
-
-        function showLiveToast() {
+        setInterval(() => {
             const toast = document.getElementById('liveToast');
             const userEl = document.getElementById('toastUser');
             const actionEl = document.getElementById('toastAction');
-
             const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
             userEl.innerText = randomBuyer.name;
             actionEl.innerText = randomBuyer.action;
-
             toast.classList.add('show');
             setTimeout(() => { toast.classList.remove('show'); }, 4000);
-        }
-
-        setInterval(showLiveToast, 9000);
+        }, 9000);
 
         window.onload = function() {
             renderSite();
-            // پشکنین بۆ ئەوەی ئەگەر ئەدمین پێشتر چووتبێتە ژوورەوە تا داخستنی پەڕەکە بە کراوەیی بمێنێتەوە
             if(sessionStorage.getItem('yarikonkan_admin_logged') === 'true') {
                 document.getElementById('adminLoginBox').style.display = 'none';
                 document.getElementById('adminDashboard').style.display = 'block';
