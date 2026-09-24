@@ -291,7 +291,7 @@
         .btn:hover { opacity: 0.95; transform: scale(1.02); }
         .btn-telegram { background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; }
 
-        /* Admin Panel Styles (Step 4) */
+        /* Admin Panel Styles */
         .admin-section {
             background: rgba(15, 23, 42, 0.95);
             border: 2px dashed var(--primary);
@@ -411,7 +411,8 @@
 </head>
 <body>
 
-    <a href="https://t.me/ind4d?text=سڵاو،%20دەمەوێت%20پرسیار%20بکەم" target="_blank" class="floating-telegram" title="پەیوەندی لە تێلیگرام">💬</a>
+    <!-- Floating Bot Button linked to @Yarikonkan_bot -->
+    <a href="https://t.me/Yarikonkan_bot?start=start" target="_blank" class="floating-telegram" title="پەیوەندی لە بۆتی تێلیگرام">🤖</a>
 
     <div class="live-toast" id="liveToast">
         <div class="toast-icon">⚡</div>
@@ -453,11 +454,11 @@
         <!-- Payment Section -->
         <div class="payment-section" id="payment">
             <h2 style="color: var(--primary); margin-bottom: 10px;">💳 چۆنیەتی پارەدان و گواستنەوەی پارە</h2>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">پارەکە لە ڕێگەی FIB یان FastPay بنێرە و وەصڵەکە لە تێلیگرام بۆمان بنێرە.</p>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">پارەکە لە ڕێگەی FIB یان FastPay بنێرە و وەصڵەکە بۆ بۆتی فەرمیمان بنێرە.</p>
             
             <ul class="steps">
                 <li>١. پارەکە بنێرە بۆ یەکێک لە ژمارەکانی خوارەوە.</li>
-                <li>٢. سکرینشۆتی وەصڵەکە بۆ تێلیگرام بنێرە.</li>
+                <li>٢. سکرینشۆتی وەصڵەکە بۆ بۆتی تێلیگرام بنێرە.</li>
             </ul>
 
             <!-- FIB Box -->
@@ -478,8 +479,8 @@
                 </div>
             </div>
 
-            <a href="https://t.me/ind4d?text=سڵاو،%20پارەم%20نارد%20و%20وەصڵەکەم%20لێرەیە" target="_blank" class="btn btn-telegram" style="margin-top: 20px; max-width: 350px; margin-left: auto; margin-right: auto;">
-                📤 ناردنی وەصڵ بۆ تێلیگرام (@ind4d)
+            <a href="https://t.me/Yarikonkan_bot?start=receipt" target="_blank" class="btn btn-telegram" style="margin-top: 20px; max-width: 350px; margin-left: auto; margin-right: auto;">
+                📤 ناردنی وەصڵ بۆ بۆتی تێلیگرام (@Yarikonkan_bot)
             </a>
         </div>
 
@@ -487,7 +488,7 @@
             <h2 style="color: var(--primary); margin-bottom: 15px; font-size: 20px; text-align: right;">❓ پرسیارە باوەکان</h2>
             <div class="faq-item">
                 <div class="faq-question">چۆن ئەکاونت حێجز بکەم؟</div>
-                <div class="faq-answer">ڕاستەوخۆ لە ڕێگەی تێلیگرامەوە نامە بنێرە.</div>
+                <div class="faq-answer">ڕاستەوخۆ لە ڕێگەی بۆتی تێلیگرامەوە نامە بنێرە.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">چەندە دەخایەنێت تا پاکێجەکەم پێ بگات؟</div>
@@ -509,9 +510,9 @@
             </div>
         </div>
 
-        <!-- Advanced Admin Panel Section (Step 4) -->
+        <!-- Admin Panel Section -->
         <div class="admin-section" id="admin">
-            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی پێشکەوتوو (هەنگاوی ٤)</h2>
+            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی پێشکەوتوو</h2>
             
             <!-- Login Form -->
             <div class="admin-login-box" id="adminLoginBox">
@@ -526,7 +527,7 @@
             <div class="admin-dashboard" id="adminDashboard">
                 <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
                     <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت، بەڕێوەبەر! ✅</h3>
-                    <p style="color: var(--text-muted); font-size: 13px;">دەتوانیت پاکێجی نوێ زیاد بکەیت، نرخ بگۆڕیت، یان سڕینەوە ئەنجام بدەیت.</p>
+                    <p style="color: var(--text-muted); font-size: 13px;">بۆتەکەت (@Yarikonkan_bot) بە سەرکەوتوویی بە سایتەکەوە بەستراوەتەوە.</p>
                 </div>
 
                 <!-- Global Settings -->
@@ -559,7 +560,7 @@
                         <input type="text" id="newPkgPrice" class="form-control" placeholder="نرخ...">
                     </div>
                     <div class="form-group">
-                        <label>تێبینی یان بڕی ستۆک (بۆ نموونە: تەنها 2 ئەکاونت ماوە! یان بەتاڵی بهێڵەرەوە):</label>
+                        <label>تێبینی یان بڕی ستۆک:</label>
                         <input type="text" id="newPkgStock" class="form-control" placeholder="ستۆک...">
                     </div>
                     <div class="form-group">
@@ -571,7 +572,7 @@
 
                 <!-- Manage/Delete Existing Packages -->
                 <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📦 سڕینەوە یان بەڕێوەبردنی پاکێجە هەنووکەیییەکان</h3>
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📦 بەڕێوەبردنی پاکێجەکان</h3>
                     <div id="adminPackagesList">
                         <!-- Loaded dynamically -->
                     </div>
@@ -587,7 +588,6 @@
     </footer>
 
     <script>
-        // Default Data
         const defaultData = {
             banner: "🚨 <b>ئاگاداری گرنگ:</b> ئەکاونتەکانی 200k یەکجار خێرا دەفرۆشرێن! هەر ئێستا <span>بۆ حێجزکردن</span> پەیوەندیمان پێوە بکە 💬",
             fastpay: "7504506173",
@@ -606,7 +606,7 @@
                     price: "9,000 دینار",
                     btnText: "کڕین و حێجزکردن",
                     btnBg: "linear-gradient(135deg, var(--accent-purple), #7c3aed)",
-                    link: "https://t.me/ind4d?text=سڵاو،%20پاکێجی%20200k%20مەوێت"
+                    link: "https://t.me/Yarikonkan_bot?start=pkg_200k"
                 },
                 {
                     id: 2,
@@ -621,7 +621,7 @@
                     price: "7,500 دینار",
                     btnText: "پرسیار و کڕین",
                     btnBg: "",
-                    link: "https://t.me/ind4d?text=سڵاو،%20Basic%20Mine%20مەوێت"
+                    link: "https://t.me/Yarikonkan_bot?start=pkg_basic"
                 },
                 {
                     id: 3,
@@ -636,7 +636,7 @@
                     price: "70,000 دینار",
                     btnText: "پرسیار و کڕین",
                     btnBg: "linear-gradient(135deg, var(--accent-blue), #0369a1)",
-                    link: "https://t.me/ind4d?text=سڵاو،%20Intermediate%20Mine%20مەوێت"
+                    link: "https://t.me/Yarikonkan_bot?start=pkg_intermediate"
                 },
                 {
                     id: 4,
@@ -651,18 +651,18 @@
                     price: "پەیوەندی بکە",
                     btnText: "پەیوەندی کردن",
                     btnBg: "",
-                    link: "https://t.me/ind4d?text=سڵاو،%20پاکێجی%20VIP%20مەوێت"
+                    link: "https://t.me/Yarikonkan_bot?start=pkg_vip"
                 }
             ]
         };
 
         function getStoreData() {
-            const data = localStorage.getItem('yarikonkan_store_data_v4');
+            const data = localStorage.getItem('yarikonkan_store_data_v5');
             return data ? JSON.parse(data) : defaultData;
         }
 
         function saveStoreData(data) {
-            localStorage.setItem('yarikonkan_store_data_v4', JSON.stringify(data));
+            localStorage.setItem('yarikonkan_store_data_v5', JSON.stringify(data));
             renderSite();
         }
 
@@ -706,7 +706,7 @@
 
                 cardHTML += `
                         <div class="price-tag">${pkg.price}</div>
-                        <a href="${pkg.link || 'https://t.me/ind4d'}" target="_blank" class="btn" style="${pkg.btnBg ? 'background: ' + pkg.btnBg + '; color: #fff;' : ''}">${pkg.btnText || 'کڕین و پرسیار'}</a>
+                        <a href="${pkg.link || 'https://t.me/Yarikonkan_bot'}" target="_blank" class="btn" style="${pkg.btnBg ? 'background: ' + pkg.btnBg + '; color: #fff;' : ''}">${pkg.btnText || 'کڕین و پرسیار'}</a>
                     </div>
                 `;
                 container.innerHTML += cardHTML;
@@ -764,12 +764,11 @@
                 price: price,
                 btnText: "کڕین و پرسیار",
                 btnBg: "",
-                link: `https://t.me/ind4d?text=سڵاو،%20پاکێجی%20${encodeURIComponent(title)}%20مەوێت`
+                link: `https://t.me/Yarikonkan_bot?start=pkg_${encodeURIComponent(title)}`
             });
 
             saveStoreData(data);
             
-            // Clear inputs
             document.getElementById('newPkgTitle').value = "";
             document.getElementById('newPkgPrice').value = "";
             document.getElementById('newPkgStock').value = "";
@@ -798,7 +797,7 @@
 
         function resetToDefault() {
             if(confirm('دڵنیایت دەتەوێت هەموو شتێک بگەرێنیتەوە سەر دۆخی سەرەتایی؟')) {
-                localStorage.removeItem('yarikonkan_store_data_v4');
+                localStorage.removeItem('yarikonkan_store_data_v5');
                 renderSite();
                 alert('گەڕایەوە سەر دۆخی سەرەتایی!');
             }
@@ -806,7 +805,7 @@
 
         function checkAdminLogin() {
             const pass = document.getElementById('adminPass').value;
-            if(pass === "1234") { // پاسوێردی ئەدمین (دەتوانیت لێرە بگۆڕیت)
+            if(pass === "1234") {
                 document.getElementById('adminLoginBox').style.display = 'none';
                 document.getElementById('adminDashboard').style.display = 'block';
                 renderAdminPackagesList();
