@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فڕۆشگای فەرمی یاریکۆنکان | Yari KonKan Store</title>
+    <title>فرۆشگای یاریکۆنکان - Yarikonkan Store</title>
+    <meta name="description" content="باشترین و متمانەپێکراوترین فرۆشگا بۆ کڕینی کۆین و ئەکاونتی یارییەکان بە خێراترین کات و باشترین نرخ.">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,10 +17,16 @@
             --text-muted: #9ca3af;
             --accent-green: #10b981;
             --accent-blue: #0284c7;
+            --accent-purple: #8b5cf6;
             --accent-red: #ef4444;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
 
         body {
             background-color: var(--bg-color);
@@ -52,18 +59,32 @@
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            text-shadow: 0 0 15px var(--primary-glow);
         }
 
-        .nav-links { display: flex; gap: 20px; list-style: none; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
         .floating-telegram {
             position: fixed;
@@ -80,10 +101,48 @@
             font-size: 28px;
             box-shadow: 0 5px 25px rgba(2, 132, 199, 0.6);
             z-index: 9999;
-            text-decoration: none;
             transition: 0.3s;
+            text-decoration: none;
+            animation: bounceFloat 2s infinite;
         }
-        .floating-telegram:hover { transform: scale(1.1); }
+
+        .floating-telegram:hover {
+            transform: scale(1.1);
+            background: #0369a1;
+        }
+
+        @keyframes bounceFloat {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .live-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 12px 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+        }
+
+        .live-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon { font-size: 24px; }
+        .toast-text h4 { font-size: 14px; color: #fff; }
+        .toast-text p { font-size: 12px; color: var(--text-muted); }
 
         .urgent-banner {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(139, 92, 246, 0.15));
@@ -94,19 +153,48 @@
             max-width: 1100px;
             text-align: center;
         }
-        .urgent-banner p { color: #fff; font-size: 14px; font-weight: 700; }
+
+        .urgent-banner p { color: #fff; font-size: 16px; font-weight: 700; }
         .urgent-banner span { color: var(--primary); }
 
-        .hero { text-align: center; padding: 30px 20px 20px; max-width: 800px; margin: 0 auto; }
-        .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; color: #fff; }
-        .hero p { color: var(--text-muted); font-size: 14px; }
+        .hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .section-title { font-size: 18px; font-weight: 700; margin: 30px 0 20px; border-right: 4px solid var(--primary); padding-right: 10px; }
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { color: var(--text-muted); font-size: 18px; margin-bottom: 30px; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 4px solid var(--primary);
+            padding-right: 12px;
+        }
 
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
@@ -115,29 +203,74 @@
             border: 1px solid var(--card-border);
             border-radius: 20px;
             padding: 25px;
-            position: relative;
-            text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
 
         .card-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary);
-            color: #000;
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-size: 11px;
+            top: 20px;
+            left: 20px;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 700;
         }
 
-        .card-icon { font-size: 40px; margin-bottom: 15px; }
-        .card-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .card-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
-        .card-price { font-size: 16px; font-weight: 800; color: var(--accent-green); margin-bottom: 20px; }
+        .card h3 { font-size: 20px; margin-bottom: 15px; color: #fff; margin-top: 10px; }
+
+        .live-stock-box {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stock-pulse {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: stockPulse 1.5s infinite;
+        }
+
+        @keyframes stockPulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .feature-list { list-style: none; margin-bottom: 20px; }
+        .feature-list li { margin: 6px 0; color: var(--text-muted); font-size: 14px; display: flex; align-items: center; gap: 8px; }
+        .feature-list li b { color: var(--text-main); }
+
+        .package-note {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px dashed rgba(139, 92, 246, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #c4b5fd;
+            margin-bottom: 15px;
+        }
+
+        .price-tag { font-size: 24px; font-weight: 800; color: var(--accent-green); margin: 15px 0; }
 
         .btn {
             display: block;
@@ -149,89 +282,669 @@
             padding: 12px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
+            font-size: 15px;
             transition: 0.3s;
+            cursor: pointer;
+            border: none;
         }
-        .btn:hover { opacity: 0.9; }
 
-        .info-section {
+        .btn:hover { opacity: 0.95; transform: scale(1.02); }
+        .btn-telegram { background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        .admin-section {
+            background: rgba(15, 23, 42, 0.95);
+            border: 2px dashed var(--primary);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .admin-login-box, .admin-dashboard {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .admin-dashboard { display: none; }
+
+        .form-group { margin-bottom: 15px; text-align: right; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--text-main); font-size: 14px; font-weight: 600; }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); }
+
+        .admin-package-row, .admin-item-row {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .payment-section {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 25px;
+            padding: 30px;
             margin-top: 40px;
-            text-align: right;
+            text-align: center;
         }
-        .info-section h3 { color: var(--primary); margin-bottom: 15px; font-size: 16px; }
-        .info-section p, .info-section li { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
-        .info-section ul { padding-right: 20px; }
 
-        footer { text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 12px; }
+        .payment-box {
+            background: rgba(0,0,0,0.4);
+            border: 2px dashed var(--primary);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 15px auto 0;
+        }
+
+        .steps {
+            text-align: right;
+            margin: 20px auto;
+            max-width: 600px;
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 12px;
+            list-style: none;
+        }
+
+        .steps li { margin: 8px 0; color: var(--text-muted); font-size: 14px; }
+
+        .fib-link {
+            display: block;
+            background: #000;
+            border: 1px solid var(--accent-green);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .fib-number { font-size: 24px; font-weight: 800; color: var(--accent-green); letter-spacing: 2px; }
+        .fib-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+        .faq-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .faq-item { margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; text-align: right; }
+        .faq-question { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .faq-answer { font-size: 14px; color: var(--text-muted); }
+
+        .reviews-slider-container {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            overflow: hidden;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .review-slide { display: none; text-align: center; width: 100%; }
+        .review-slide.active { display: block; }
+        .review-stars { color: var(--primary); font-size: 18px; margin-bottom: 8px; }
+        .review-text-lg { font-size: 16px; color: var(--text-main); margin-bottom: 10px; font-style: italic; }
+        .review-author-lg { font-weight: 700; color: var(--primary); font-size: 14px; }
+
+        footer { text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
     </style>
 </head>
 <body>
 
     <a href="https://t.me/Ind4d" target="_blank" class="floating-telegram" title="پەیوەندی لە تێلیگرام">💬</a>
 
+    <div class="live-toast" id="liveToast">
+        <div class="toast-icon">⚡</div>
+        <div class="toast-text">
+            <h4 id="toastUser">کەسێک لە هەولێر</h4>
+            <p id="toastAction">پاکێجی 200k ی کڕی!</p>
+        </div>
+    </div>
+
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">⚡ Yari KonKan Store</a>
+            <a href="#" class="logo">⚡ یاریکۆنکان | Yarikonkan</a>
             <ul class="nav-links">
                 <li><a href="#packages">پاکێجەکان</a></li>
-                <li><a href="#info">ڕێنمایی</a></li>
+                <li><a href="#payment">چۆنیەتی کڕین</a></li>
+                <li><a href="#reviews">ڕای کڕیاران</a></li>
+                <li><a href="#admin">ئەدمین پانێل</a></li>
             </ul>
         </div>
     </header>
 
     <div class="urgent-banner">
-        <p>🚨 <b>ئاگاداری:</b> خزمەتگوزارییەکان بە زووترین کات دوای داواکردن جێبەجێ دەکرێن.</p>
+        <p id="bannerTextDisplay">🚨 <b>ئاگاداری گرنگ:</b> ئەکاونتەکانی 200k یەکجار خێرا دەفرۆشرێن! هەر ئێستا <span>بۆ حێجزکردن</span> پەیوەندیمان پێوە بکە 💬</p>
     </div>
 
     <section class="hero">
-        <h1>فڕۆشگای فەرمی یاری Yari KonKan</h1>
-        <p>باشترین و خێراترین خزمەتگوزاری بۆ دابینکردنی پێداویستییەکانی یارییەکەت.</p>
+        <h1 id="heroTitleDisplay">فرۆشگای یاریکۆنکان</h1>
+        <p id="heroSubtitleDisplay">خێرا‌ترین و متمانەپێکراوترین شوێن بۆ دابینکردنی کۆین و ئەکاونت.</p>
     </section>
 
     <div class="container">
-        <h2 class="section-title" id="packages">📦 پاکێجەکان و خزمەتگوزارییەکان</h2>
-        
-        <div class="grid-cards">
-            <!-- نموونەی پاکێج ١ -->
-            <div class="card">
-                <div class="card-badge">باو</div>
-                <div class="card-icon">🪙</div>
-                <div class="card-title">پاکێجی سەرەتایی</div>
-                <div class="card-desc">دابینکردنی بڕی پێویست بۆ دەستپێک</div>
-                <div class="card-price">بۆ نرخ پەیوەندی بکە</div>
-                <a href="https://t.me/Ind4d?text=سڵاو، دەمەوێت لە بارەی پاکێجی سەرەتاییەوە پرسیار بکەم" target="_blank" class="btn">داواکردن لە تێلیگرام</a>
+        <h2 class="section-title" id="packages">📦 پاکێجەکان و کانزای کۆین</h2>
+        <div class="grid-cards" id="packagesContainer"></div>
+
+        <div class="payment-section" id="payment">
+            <h2 style="color: var(--primary); margin-bottom: 10px;">💳 چۆنیەتی پارەدان و گواستنەوەی پارە</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">پارەکە لە ڕێگەی FIB بنێرە و وەصڵەکە بۆ تێلیگرام بنێرە.</p>
+            
+            <ul class="steps">
+                <li>١. پارەکە بنێرە بۆ ژمارەی هەژماری FIB خوارەوە.</li>
+                <li>٢. سکرینشۆتی وەصڵەکە بۆ تێلیگرام بنێرە.</li>
+            </ul>
+
+            <div class="payment-box">
+                <div style="font-size: 14px; color: var(--accent-green); font-weight: 700; margin-bottom: 4px;">ژمارەی هەژماری FIB:</div>
+                <div class="fib-link" onclick="copyInfo(document.getElementById('fibNumDisplay').innerText, 'fib-hint-1')">
+                    <div class="fib-number" id="fibNumDisplay" style="color: var(--accent-green);">7517936978</div>
+                    <div class="fib-hint" id="fib-hint-1">👉 کلیک لێرە بکە بۆ کۆپیکردن</div>
+                </div>
             </div>
 
-            <!-- نموونەی پاکێج ٢ -->
-            <div class="card">
-                <div class="card-badge" style="background: var(--accent-green);">تایبەت</div>
-                <div class="card-icon">💎</div>
-                <div class="card-title">پاکێجی پێشکەوتوو</div>
-                <div class="card-desc">باشترین هەڵبژاردن بۆ یاریزانە چالاکەکان</div>
-                <div class="card-price">بۆ نرخ پەیوەندی بکە</div>
-                <a href="https://t.me/Ind4d?text=سڵاو، دەمەوێت لە بارەی پاکێجی پێشکەوتووەوە پرسیار بکەم" target="_blank" class="btn">داواکردن لە تێلیگرام</a>
-            </div>
+            <a href="https://t.me/Ind4d?text=سڵاو، وەصڵی پارەدانم ناردووە" target="_blank" class="btn btn-telegram" style="margin-top: 20px; max-width: 350px; margin-left: auto; margin-right: auto;">
+                📤 ناردنی وەصڵ بۆ تێلیگرام (@Ind4d)
+            </a>
         </div>
 
-        <div class="info-section" id="info">
-            <h3>ℹ️ چۆنیەتی داواکردن و کڕین</h3>
-            <ul>
-                <div>١. پاکێجی مەبەست دیاری بکە و دوگمەی داواکردن سەرکوتە.</div>
-                <div>٢. ڕاستەوخۆ دەگوازرێیتەوە بۆ تێلیگرام بۆ لای پشتیوانی.</div>
-                <div>٣. دوای ناردنی پێدانی پارە، داواکارییەکەت لە کاتێکی کەمدا جێبەجێ دەکرێت.</div>
-            </ul>
+        <div class="faq-section" id="faq">
+            <h2 style="color: var(--primary); margin-bottom: 15px; font-size: 20px; text-align: right;">❓ پرسیارە باوەکان</h2>
+            <div id="faqContainer"></div>
+        </div>
+
+        <h2 class="section-title" id="reviews" style="margin-top: 40px;">⭐ ڕای کڕیاران</h2>
+        <div class="reviews-slider-container" id="sliderContainer">
+            <!-- Reviews injected here -->
+        </div>
+
+        <!-- Admin Panel Section -->
+        <div class="admin-section" id="admin">
+            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی پارێزراو</h2>
+            
+            <div class="admin-login-box" id="adminLoginBox">
+                <div style="background: rgba(2, 132, 199, 0.1); border: 1px solid var(--accent-blue); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center;">
+                    <p style="color: #38bdf8; font-size: 14px; font-weight: 600;">🔒 ناوچەی تایبەتی بەڕێوەبەر:</p>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;">تکایە پاسوێردی تایبەتی ئەدمین بنووسە بۆ کردنەوەی پانێڵەکە.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>پاسوێردی ئەدمین:</label>
+                    <input type="password" id="adminPasswordInput" class="form-control" placeholder="پاسوێرد لێرە بنووسە...">
+                </div>
+                <button onclick="checkAdminLogin()" class="btn" style="background: var(--accent-green); color: #fff;">چوونەژوورەوە 🔓</button>
+            </div>
+
+            <div class="admin-dashboard" id="adminDashboard">
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                    <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت، ئەدمین! ✅</h3>
+                    <p style="color: var(--text-muted); font-size: 13px;">ئێستا دەتوانیت هەموو شتێکی سایتەکە دەستکاری بکەیت.</p>
+                </div>
+
+                <!-- Global Settings -->
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📌 ڕێکخستنی دەقی سەرەکی و نامەکان</h3>
+                    <div class="form-group">
+                        <label>سەردێڕی سەرەکی (Hero Title):</label>
+                        <input type="text" id="settingHeroTitle" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>ژێرنووسی سەرەکی (Hero Subtitle):</label>
+                        <input type="text" id="settingHeroSubtitle" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>نامەی ئاگاداری سەرەوە (Banner):</label>
+                        <input type="text" id="settingBanner" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>ژمارەی FIB:</label>
+                        <input type="text" id="settingFib" class="form-control">
+                    </div>
+                    <button onclick="saveGlobalSettings()" class="btn" style="background: var(--accent-green); color: #fff;">پاشەکەوتکردنی ڕێکخستنەکان 💾</button>
+                </div>
+
+                <!-- Packages Management -->
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px;">📦 زیادکردنی پاکێجی نوێ</h3>
+                    <div class="form-group">
+                        <label>ناوی پاکێج:</label>
+                        <input type="text" id="newPkgTitle" class="form-control" placeholder="ناوی پاکێج...">
+                    </div>
+                    <div class="form-group">
+                        <label>نرخی پاکێج:</label>
+                        <input type="text" id="newPkgPrice" class="form-control" placeholder="نرخ...">
+                    </div>
+                    <div class="form-group">
+                        <label>ستۆک یان تێبینی:</label>
+                        <input type="text" id="newPkgStock" class="form-control" placeholder="تەنها 3 ئەکاونت ماوە...">
+                    </div>
+                    <div class="form-group">
+                        <label>تایبەتمەندییەکان (بە کامما جیایان بکەرەوە):</label>
+                        <input type="text" id="newPkgFeatures" class="form-control" placeholder="بۆ نموونە: بڕی کۆین: 200k, دیاری: 3 Gifts">
+                    </div>
+                    <button onclick="addNewPackage()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی پاکێج 🚀</button>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📋 بەڕێوەبردنی پاکێجە هەنراوەکان</h3>
+                    <div id="adminPackagesList"></div>
+                </div>
+
+                <!-- FAQ Management -->
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px;">❓ زیادکردنی پرسیار و وەڵام (FAQ)</h3>
+                    <div class="form-group">
+                        <label>پرسیار:</label>
+                        <input type="text" id="newFaqQ" class="form-control" placeholder="پرسیارەکە...">
+                    </div>
+                    <div class="form-group">
+                        <label>وەڵام:</label>
+                        <input type="text" id="newFaqA" class="form-control" placeholder="وەڵامەکە...">
+                    </div>
+                    <button onclick="addNewFaq()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی پرسیار ➕</button>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📋 بەڕێوەبردنی پرسیارەکان</h3>
+                    <div id="adminFaqList"></div>
+                </div>
+
+                <!-- Reviews Management -->
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px;">⭐ زیادکردنی ڕای کڕیار</h3>
+                    <div class="form-group">
+                        <label>دەقی ڕای کڕیار:</label>
+                        <input type="text" id="newRevText" class="form-control" placeholder="زۆر سوپاس، خێرا و متمانەپێکراو...">
+                    </div>
+                    <div class="form-group">
+                        <label>ناوی کڕیار و شار:</label>
+                        <input type="text" id="newRevAuthor" class="form-control" placeholder="میران بەختیار (سلێمانی)">
+                    </div>
+                    <button onclick="addNewReview()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی ڕای کڕیار ➕</button>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📋 بەڕێوەبردنی ڕای کڕیاران</h3>
+                    <div id="adminReviewList"></div>
+                </div>
+
+                <button onclick="adminLogout()" class="btn" style="background: #374151; color: #fff; margin-bottom: 10px;">چوونە دەرەوە لە ئەدمین 🔒</button>
+                <button onclick="resetToDefault()" class="btn" style="background: var(--accent-red); color: #fff;">گەڕانەوە بۆ دۆخی سەرەتایی سایت 🔄</button>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>هەموو مافێک پارێزراوە بۆ © 2026 Yari KonKan Store</p>
+        <p>هەموو مافێک پارێزراوە بۆ © 2026 فرۆشگای یاریکۆنکان (Yarikonkan)</p>
     </footer>
 
+    <script>
+        const ADMIN_PASSWORD = "indad793@"; 
+
+        const defaultData = {
+            heroTitle: "فرۆشگای یاریکۆنکان",
+            heroSubtitle: "خێرا‌ترین و متمانەپێکراوترین شوێن بۆ دابینکردنی کۆین و ئەکاونت.",
+            banner: "🚨 <b>ئاگاداری گرنگ:</b> ئەکاونتەکانی 200k یەکجار خێرا دەفرۆشرێن! هەر ئێستا <span>بۆ حێجزکردن</span> پەیوەندیمان پێوە بکە 💬",
+            fib: "7517936978",
+            packages: [
+                {
+                    id: 1,
+                    badge: "پڕخواستترین 🔥",
+                    badgeColor: "rgba(139, 92, 246, 0.15)",
+                    badgeTextColor: "var(--accent-purple)",
+                    borderColor: "var(--accent-purple)",
+                    title: "200k Coins + 3 Gifts",
+                    stockText: "تەنها <b>3 ئەکاونت</b> ماوە!",
+                    note: "📌 ئەکاونتی ئۆفەرکراو لەگەڵ 200k کۆین و 3 سەقەر.",
+                    features: ["🔹 بڕی کۆین: <b>200,000 Coins</b>", "🔹 دیاری: <b>3 Gifts</b>"],
+                    price: "9,000 دینار",
+                    btnText: "کڕین و حێجزکردن",
+                    btnBg: "linear-gradient(135deg, var(--accent-purple), #7c3aed)",
+                    link: "https://t.me/Ind4d?text=سڵاو، دەمەوێت پاکێجی 200k کڕین و حێجز بکەم"
+                },
+                {
+                    id: 2,
+                    badge: "سەرەتایی",
+                    badgeColor: "rgba(245, 158, 11, 0.15)",
+                    badgeTextColor: "var(--primary)",
+                    borderColor: "var(--card-border)",
+                    title: "Basic Mine",
+                    stockText: "",
+                    note: "",
+                    features: ["🔹 کۆینی گشتی: <b>211,058 Coins</b>", "🔹 وەرگرتنی دەستبەجێ: <b>61,898 Coins</b>"],
+                    price: "7,500 دینار",
+                    btnText: "پرسیار و کڕین",
+                    btnBg: "",
+                    link: "https://t.me/Ind4d?text=سڵاو، دەمەوێت لە بارەی پاکێجی Basic Mine پرسیار بکەم"
+                }
+            ],
+            faqs: [
+                {q: "چۆن ئەکاونت حێجز بکەم؟", a: "ڕاستەوخۆ لە ڕێگەی تێلیگرامەوە نامە بنێرە."},
+                {q: "چەندە دەخایەنێت تا پاکێجەکەم پێ بگات؟", a: "تەنها 2 بۆ 5 خولەک دوای ناردنی وەصڵ."}
+            ],
+            reviews: [
+                {text: "زۆر سوپاس، خێرا و متمانەپێکراو!", author: "میران بەختیار (سلێمانی)"},
+                {text: "بەڕاستی باشترین فرۆشگای کۆین و ئەکاونتە.", author: "دانا ئەحمەد (هەولێر)"}
+            ]
+        };
+
+        function getStoreData() {
+            const data = localStorage.getItem('yarikonkan_store_data_v10');
+            return data ? JSON.parse(data) : defaultData;
+        }
+
+        function saveStoreData(data) {
+            localStorage.setItem('yarikonkan_store_data_v10', JSON.stringify(data));
+            renderSite();
+        }
+
+        function renderSite() {
+            const data = getStoreData();
+            
+            document.getElementById('heroTitleDisplay').innerText = data.heroTitle;
+            document.getElementById('heroSubtitleDisplay').innerText = data.heroSubtitle;
+            document.getElementById('bannerTextDisplay').innerHTML = data.banner;
+            document.getElementById('fibNumDisplay').innerText = data.fib;
+
+            // Render Packages
+            const container = document.getElementById('packagesContainer');
+            container.innerHTML = "";
+            data.packages.forEach((pkg) => {
+                let cardHTML = `
+                    <div class="card" style="border-color: ${pkg.borderColor || 'var(--card-border)'};">
+                        <div class="card-badge" style="background: ${pkg.badgeColor || 'rgba(245, 158, 11, 0.15)'}; color: ${pkg.badgeTextColor || 'var(--primary)'};">${pkg.badge || 'پاکێج'}</div>
+                        <h3>${pkg.title}</h3>
+                `;
+                if(pkg.stockText) {
+                    cardHTML += `
+                        <div class="live-stock-box">
+                            <span>⚠️ <b>${pkg.stockText}</b></span>
+                            <div class="stock-pulse"></div>
+                        </div>
+                    `;
+                }
+                if(pkg.note) {
+                    cardHTML += `<div class="package-note">${pkg.note}</div>`;
+                }
+                cardHTML += `<ul class="feature-list">`;
+                if(pkg.features && Array.isArray(pkg.features)) {
+                    pkg.features.forEach(f => { cardHTML += `<li>${f}</li>`; });
+                }
+                cardHTML += `</ul>`;
+                cardHTML += `
+                        <div class="price-tag">${pkg.price}</div>
+                        <a href="${pkg.link || 'https://t.me/Ind4d'}" target="_blank" class="btn" style="${pkg.btnBg ? 'background: ' + pkg.btnBg + '; color: #fff;' : ''}">${pkg.btnText || 'کڕین و پرسیار'}</a>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+
+            // Render FAQs
+            const faqContainer = document.getElementById('faqContainer');
+            faqContainer.innerHTML = "";
+            data.faqs.forEach((faq) => {
+                faqContainer.innerHTML += `
+                    <div class="faq-item">
+                        <div class="faq-question">${faq.q}</div>
+                        <div class="faq-answer">${faq.a}</div>
+                    </div>
+                `;
+            });
+
+            // Render Reviews Slider
+            const sliderContainer = document.getElementById('sliderContainer');
+            sliderContainer.innerHTML = "";
+            data.reviews.forEach((rev, idx) => {
+                sliderContainer.innerHTML += `
+                    <div class="review-slide ${idx === 0 ? 'active' : ''}">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <div class="review-text-lg">"${rev.text}"</div>
+                        <div class="review-author-lg">👤 ${rev.author}</div>
+                    </div>
+                `;
+            });
+
+            // Fill admin form inputs
+            document.getElementById('settingHeroTitle').value = data.heroTitle;
+            document.getElementById('settingHeroSubtitle').value = data.heroSubtitle;
+            document.getElementById('settingBanner').value = data.banner;
+            document.getElementById('settingFib').value = data.fib;
+
+            renderAdminLists();
+        }
+
+        function renderAdminLists() {
+            const data = getStoreData();
+
+            // Packages Admin List
+            const pkgList = document.getElementById('adminPackagesList');
+            pkgList.innerHTML = "";
+            data.packages.forEach((pkg, index) => {
+                pkgList.innerHTML += `
+                    <div class="admin-item-row">
+                        <div>
+                            <strong style="color: #fff;">${pkg.title}</strong><br>
+                            <span style="color: var(--accent-green); font-size: 13px;">نرخ: ${pkg.price}</span>
+                        </div>
+                        <button onclick="deletePackage(${index})" class="btn" style="padding: 6px 14px; font-size: 13px; background: var(--accent-red); color: #fff; width: auto;">سڕینەوە 🗑️</button>
+                    </div>
+                `;
+            });
+
+            // FAQ Admin List
+            const faqList = document.getElementById('adminFaqList');
+            faqList.innerHTML = "";
+            data.faqs.forEach((faq, index) => {
+                faqList.innerHTML += `
+                    <div class="admin-item-row">
+                        <div>
+                            <strong style="color: #fff;">${faq.q}</strong>
+                        </div>
+                        <button onclick="deleteFaq(${index})" class="btn" style="padding: 6px 14px; font-size: 13px; background: var(--accent-red); color: #fff; width: auto;">سڕینەوە 🗑️</button>
+                    </div>
+                `;
+            });
+
+            // Reviews Admin List
+            const revList = document.getElementById('adminReviewList');
+            revList.innerHTML = "";
+            data.reviews.forEach((rev, index) => {
+                revList.innerHTML += `
+                    <div class="admin-item-row">
+                        <div>
+                            <strong style="color: #fff;">${rev.author}</strong>
+                        </div>
+                        <button onclick="deleteReview(${index})" class="btn" style="padding: 6px 14px; font-size: 13px; background: var(--accent-red); color: #fff; width: auto;">سڕینەوە 🗑️</button>
+                    </div>
+                `;
+            });
+        }
+
+        function saveGlobalSettings() {
+            let data = getStoreData();
+            data.heroTitle = document.getElementById('settingHeroTitle').value;
+            data.heroSubtitle = document.getElementById('settingHeroSubtitle').value;
+            data.banner = document.getElementById('settingBanner').value;
+            data.fib = document.getElementById('settingFib').value;
+            saveStoreData(data);
+            alert('ڕێکخستنە گشتییەکان پاشەکەوت کران!');
+        }
+
+        function addNewPackage() {
+            const title = document.getElementById('newPkgTitle').value;
+            const price = document.getElementById('newPkgPrice').value;
+            const stock = document.getElementById('newPkgStock').value;
+            const featuresInput = document.getElementById('newPkgFeatures').value;
+
+            if(!title || !price) {
+                alert('تکایە ناو و نرخ بنووسە!');
+                return;
+            }
+
+            let features = featuresInput ? featuresInput.split(',').map(item => `🔹 ${item.trim()}`) : ["🔹 خزمەتگوزاری خێرا"];
+
+            let data = getStoreData();
+            data.packages.push({
+                id: Date.now(),
+                badge: "نوێ ✨",
+                badgeColor: "rgba(16, 185, 129, 0.15)",
+                badgeTextColor: "var(--accent-green)",
+                borderColor: "var(--accent-green)",
+                title: title,
+                stockText: stock ? stock : "",
+                note: "",
+                features: features,
+                price: price,
+                btnText: "کڕین و پرسیار",
+                btnBg: "",
+                link: `https://t.me/Ind4d?text=${encodeURIComponent('سڵاو، دەمەوێت لە بارەی ' + title + ' پرسیار بکەم')}`
+            });
+
+            saveStoreData(data);
+            document.getElementById('newPkgTitle').value = "";
+            document.getElementById('newPkgPrice').value = "";
+            document.getElementById('newPkgStock').value = "";
+            document.getElementById('newPkgFeatures').value = "";
+            alert('پاکێجەکە زیاد کرا! 🎉');
+        }
+
+        function deletePackage(index) {
+            if(confirm('دڵنیایت؟')) {
+                let data = getStoreData();
+                data.packages.splice(index, 1);
+                saveStoreData(data);
+            }
+        }
+
+        function addNewFaq() {
+            const q = document.getElementById('newFaqQ').value;
+            const a = document.getElementById('newFaqA').value;
+            if(!q || !a) { alert('تکایە هەردوو خانه پڕ بکەرەوە!'); return; }
+            let data = getStoreData();
+            data.faqs.push({q, a});
+            saveStoreData(data);
+            document.getElementById('newFaqQ').value = "";
+            document.getElementById('newFaqA').value = "";
+            alert('پرسیارەکە زیاد کرا!');
+        }
+
+        function deleteFaq(index) {
+            if(confirm('دڵنیایت؟')) {
+                let data = getStoreData();
+                data.faqs.splice(index, 1);
+                saveStoreData(data);
+            }
+        }
+
+        function addNewReview() {
+            const text = document.getElementById('newRevText').value;
+            const author = document.getElementById('newRevAuthor').value;
+            if(!text || !author) { alert('تکایە هەردوو خانه پڕ بکەرەوە!'); return; }
+            let data = getStoreData();
+            data.reviews.push({text, author});
+            saveStoreData(data);
+            document.getElementById('newRevText').value = "";
+            document.getElementById('newRevAuthor').value = "";
+            alert('ڕای کڕیار زیاد کرا!');
+        }
+
+        function deleteReview(index) {
+            if(confirm('دڵنیایت؟')) {
+                let data = getStoreData();
+                data.reviews.splice(index, 1);
+                saveStoreData(data);
+            }
+        }
+
+        function resetToDefault() {
+            if(confirm('دڵنیایت دەتەوێت هەموو شتێک بگەرێنیتەوە سەر دۆخی سەرەتایی؟')) {
+                localStorage.removeItem('yarikonkan_store_data_v10');
+                renderSite();
+                alert('گەڕایەوە سەر سەرەتا!');
+            }
+        }
+
+        function checkAdminLogin() {
+            const pass = document.getElementById('adminPasswordInput').value.trim();
+            if(pass === ADMIN_PASSWORD) {
+                sessionStorage.setItem('yarikonkan_admin_logged', 'true');
+                document.getElementById('adminLoginBox').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                renderAdminLists();
+                alert('بە سەرکەوتوویی چوویە ژوورەوە بۆ ئەدمین پانێڵ! ✅');
+            } else {
+                alert('پاسوێردی ئەدمین هەڵەیە! تکایە دووبارە هەوڵ بدەوە.');
+            }
+        }
+
+        function adminLogout() {
+            sessionStorage.removeItem('yarikonkan_admin_logged');
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.getElementById('adminLoginBox').style.display = 'block';
+            document.getElementById('adminPasswordInput').value = '';
+            alert('چوویتە دەرەوە!');
+        }
+
+        function copyInfo(text, hintId) {
+            navigator.clipboard.writeText(text).then(function() {
+                const hint = document.getElementById(hintId);
+                const originalText = hint.innerText;
+                hint.innerText = "✅ کۆپی کرا!";
+                setTimeout(() => { hint.innerText = originalText; }, 3000);
+            });
+        }
+
+        let currentIndex = 0;
+        setInterval(() => {
+            let slides = document.querySelectorAll('.review-slide');
+            if(slides.length > 0) {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }
+        }, 5000);
+
+        const buyers = [
+            {name: "میران لە سلێمانی", action: "پاکێجی 200k ی کڕی! 🔥"},
+            {name: "دانا لە هەولێر", action: "کانی 200k ی حێجز کرد! ⚡"}
+        ];
+        setInterval(() => {
+            const toast = document.getElementById('liveToast');
+            const userEl = document.getElementById('toastUser');
+            const actionEl = document.getElementById('toastAction');
+            const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
+            userEl.innerText = randomBuyer.name;
+            actionEl.innerText = randomBuyer.action;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 4000);
+        }, 9000);
+
+        window.onload = function() {
+            renderSite();
+            if(sessionStorage.getItem('yarikonkan_admin_logged') === 'true') {
+                document.getElementById('adminLoginBox').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+            }
+        };
+    </script>
 </body>
 </html>
