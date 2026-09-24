@@ -291,7 +291,6 @@
         .btn:hover { opacity: 0.95; transform: scale(1.02); }
         .btn-telegram { background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; }
 
-        /* Admin Panel Styles */
         .admin-section {
             background: rgba(15, 23, 42, 0.95);
             border: 2px dashed var(--primary);
@@ -411,7 +410,6 @@
 </head>
 <body>
 
-    <!-- Floating Bot Button linked to @Yarikonkan_bot -->
     <a href="https://t.me/Yarikonkan_bot?start=start" target="_blank" class="floating-telegram" title="پەیوەندی لە بۆتی تێلیگرام">🤖</a>
 
     <div class="live-toast" id="liveToast">
@@ -446,12 +444,8 @@
     <div class="container">
         <h2 class="section-title" id="packages">📦 پاکێجەکان و کانزای کۆین</h2>
         
-        <!-- Packages Container -->
-        <div class="grid-cards" id="packagesContainer">
-            <!-- Dynamic packages -->
-        </div>
+        <div class="grid-cards" id="packagesContainer"></div>
 
-        <!-- Payment Section -->
         <div class="payment-section" id="payment">
             <h2 style="color: var(--primary); margin-bottom: 10px;">💳 چۆنیەتی پارەدان و گواستنەوەی پارە</h2>
             <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">پارەکە لە ڕێگەی FIB یان FastPay بنێرە و وەصڵەکە بۆ بۆتی فەرمیمان بنێرە.</p>
@@ -461,7 +455,6 @@
                 <li>٢. سکرینشۆتی وەصڵەکە بۆ بۆتی تێلیگرام بنێرە.</li>
             </ul>
 
-            <!-- FIB Box -->
             <div class="payment-box">
                 <div style="font-size: 14px; color: var(--accent-green); font-weight: 700; margin-bottom: 4px;">ژمارەی هەژماری FIB:</div>
                 <div class="fib-link" onclick="copyInfo(document.getElementById('fibNumDisplay').innerText, 'fib-hint-1')">
@@ -470,7 +463,6 @@
                 </div>
             </div>
 
-            <!-- FastPay Box -->
             <div class="payment-box" style="border-color: #0284c7;">
                 <div style="font-size: 14px; color: #38bdf8; font-weight: 700; margin-bottom: 4px;">ژمارەی فاستپەی (FastPay):</div>
                 <div class="fib-link" onclick="copyInfo(document.getElementById('fastpayNumDisplay').innerText, 'fib-hint-2')" style="border-color: #0284c7;">
@@ -510,27 +502,23 @@
             </div>
         </div>
 
-        <!-- Admin Panel Section -->
         <div class="admin-section" id="admin">
-            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی پێشکەوتوو</h2>
+            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی تایبەت بە بەڕێوەبەر</h2>
             
-            <!-- Login Form -->
             <div class="admin-login-box" id="adminLoginBox">
-                <p style="color: var(--text-muted); text-align: center; margin-bottom: 15px; font-size: 14px;">تکایە تێپەڕەوشە (Password) بنوسە بۆ چوونە ژوورەوە (پاسوێردی سەرەتایی: 1234):</p>
+                <p style="color: var(--text-muted); text-align: center; margin-bottom: 15px; font-size: 14px;">تکایە تێپەڕەوشەی تایبەتی ئەدمین بنوسە بۆ چوونە ژوورەوە:</p>
                 <div class="form-group">
-                    <input type="password" id="adminPass" class="form-control" placeholder="تێپەڕەوشە...">
+                    <input type="password" id="adminPass" class="form-control" placeholder="تێپەڕەوشەی ئەدمین...">
                 </div>
                 <button onclick="checkAdminLogin()" class="btn">چوونە ژوورەوە 🔓</button>
             </div>
 
-            <!-- Dashboard -->
             <div class="admin-dashboard" id="adminDashboard">
                 <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
-                    <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت، بەڕێوەبەر! ✅</h3>
-                    <p style="color: var(--text-muted); font-size: 13px;">بۆتەکەت (@Yarikonkan_bot) بە سەرکەوتوویی بە سایتەکەوە بەستراوەتەوە.</p>
+                    <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت بۆ ژووری کۆنترۆڵ! ✅</h3>
+                    <p style="color: var(--text-muted); font-size: 13px;">بۆتەکەت (@Yarikonkan_bot) بە سەرکەوتوویی لەگەڵ سایتەکەدا کار دەکات.</p>
                 </div>
 
-                <!-- Global Settings -->
                 <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
                     <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📌 ڕێکخستنی گشتی و ژمارەکان</h3>
                     <div class="form-group">
@@ -548,15 +536,14 @@
                     <button onclick="saveGlobalSettings()" class="btn" style="background: var(--accent-green); color: #fff;">پاشەکەوتکردنی ڕێکخستنەکان 💾</button>
                 </div>
 
-                <!-- Add New Package Box -->
                 <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
                     <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px;">➕ زیادکردنی پاکێجی نوێ بۆ سایت</h3>
                     <div class="form-group">
-                        <label>ناوی پاکێج (بۆ نموونە: 500k Coins):</label>
+                        <label>ناوی پاکێج:</label>
                         <input type="text" id="newPkgTitle" class="form-control" placeholder="ناوی پاکێج...">
                     </div>
                     <div class="form-group">
-                        <label>نرخی پاکێج (بۆ نموونە: 15,000 دینار):</label>
+                        <label>نرخی پاکێج:</label>
                         <input type="text" id="newPkgPrice" class="form-control" placeholder="نرخ...">
                     </div>
                     <div class="form-group">
@@ -564,21 +551,19 @@
                         <input type="text" id="newPkgStock" class="form-control" placeholder="ستۆک...">
                     </div>
                     <div class="form-group">
-                        <label>تایبەتمەندییەکان (ڕیز بە ڕیز بە کامما جیایان بکەرەوە):</label>
-                        <input type="text" id="newPkgFeatures" class="form-control" placeholder="بۆ نموونە: بڕی کۆین: 500k, دیاری: 2 Gifts">
+                        <label>تایبەتمەندییەکان (بە کامما جیایان بکەرەوە):</label>
+                        <input type="text" id="newPkgFeatures" class="form-control" placeholder="بۆ نموونە: بڕی کۆین: 500k">
                     </div>
                     <button onclick="addNewPackage()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی پاکێج بۆ سایت 🚀</button>
                 </div>
 
-                <!-- Manage/Delete Existing Packages -->
                 <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
                     <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📦 بەڕێوەبردنی پاکێجەکان</h3>
-                    <div id="adminPackagesList">
-                        <!-- Loaded dynamically -->
-                    </div>
+                    <div id="adminPackagesList"></div>
                 </div>
 
-                <button onclick="resetToDefault()" class="btn" style="background: var(--accent-red); color: #fff; margin-top: 10px;">گەڕانەوە بۆ دۆخی سەرەتایی 🔄</button>
+                <button onclick="adminLogout()" class="btn" style="background: #374151; color: #fff; margin-bottom: 10px;">چوونە دەرەوە لە ئەدمین 🔒</button>
+                <button onclick="resetToDefault()" class="btn" style="background: var(--accent-red); color: #fff;">گەڕانەوە بۆ دۆخی سەرەتایی 🔄</button>
             </div>
         </div>
     </div>
@@ -588,6 +573,9 @@
     </footer>
 
     <script>
+        // لێرە دەتوانیت پاسوێردی ئەدمین بگۆڕیت بۆ هەر شتێک کە دەتەوێت
+        const ADMIN_SECRET_PASS = "YariKonkan@2026"; 
+
         const defaultData = {
             banner: "🚨 <b>ئاگاداری گرنگ:</b> ئەکاونتەکانی 200k یەکجار خێرا دەفرۆشرێن! هەر ئێستا <span>بۆ حێجزکردن</span> پەیوەندیمان پێوە بکە 💬",
             fastpay: "7504506173",
@@ -657,12 +645,12 @@
         };
 
         function getStoreData() {
-            const data = localStorage.getItem('yarikonkan_store_data_v5');
+            const data = localStorage.getItem('yarikonkan_store_data_v6');
             return data ? JSON.parse(data) : defaultData;
         }
 
         function saveStoreData(data) {
-            localStorage.setItem('yarikonkan_store_data_v5', JSON.stringify(data));
+            localStorage.setItem('yarikonkan_store_data_v6', JSON.stringify(data));
             renderSite();
         }
 
@@ -774,7 +762,7 @@
             document.getElementById('newPkgStock').value = "";
             document.getElementById('newPkgFeatures').value = "";
 
-            alert('پاکێجەکە بە سەرکەوتوویی بۆ سایت زیاد کرا! 🎉');
+            alert('پاکێجەکە بە سەرکەوتوویی زیاد کرا! 🎉');
         }
 
         function deletePackage(index) {
@@ -797,7 +785,7 @@
 
         function resetToDefault() {
             if(confirm('دڵنیایت دەتەوێت هەموو شتێک بگەرێنیتەوە سەر دۆخی سەرەتایی؟')) {
-                localStorage.removeItem('yarikonkan_store_data_v5');
+                localStorage.removeItem('yarikonkan_store_data_v6');
                 renderSite();
                 alert('گەڕایەوە سەر دۆخی سەرەتایی!');
             }
@@ -805,14 +793,23 @@
 
         function checkAdminLogin() {
             const pass = document.getElementById('adminPass').value;
-            if(pass === "1234") {
+            if(pass === ADMIN_SECRET_PASS) {
+                sessionStorage.setItem('yarikonkan_admin_logged', 'true');
                 document.getElementById('adminLoginBox').style.display = 'none';
                 document.getElementById('adminDashboard').style.display = 'block';
                 renderAdminPackagesList();
                 alert('بە سەرکەوتوویی چوویە ژوورەوە!');
             } else {
-                alert('تێپەڕەوشە هەڵەیە!');
+                alert('تێپەڕەوشەی ئەدمین هەڵەیە!');
             }
+        }
+
+        function adminLogout() {
+            sessionStorage.removeItem('yarikonkan_admin_logged');
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.getElementById('adminLoginBox').style.display = 'block';
+            document.getElementById('adminPass').value = '';
+            alert('بە سەرکەوتوویی چوویە دەرەوە!');
         }
 
         function copyInfo(text, hintId) {
@@ -861,6 +858,11 @@
 
         window.onload = function() {
             renderSite();
+            // پشکنین بۆ ئەوەی ئەگەر ئەدمین پێشتر چووتبێتە ژوورەوە تا داخستنی پەڕەکە بە کراوەیی بمێنێتەوە
+            if(sessionStorage.getItem('yarikonkan_admin_logged') === 'true') {
+                document.getElementById('adminLoginBox').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+            }
         };
     </script>
 </body>
