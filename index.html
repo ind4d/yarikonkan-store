@@ -487,28 +487,24 @@
 
         <!-- Admin Panel Section -->
         <div class="admin-section" id="admin">
-            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی پاریزراو (تێلیگرام سکوێریتی)</h2>
+            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی پارێزراو</h2>
             
             <div class="admin-login-box" id="adminLoginBox">
                 <div style="background: rgba(2, 132, 199, 0.1); border: 1px solid var(--accent-blue); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center;">
-                    <p style="color: #38bdf8; font-size: 14px; font-weight: 600;">🔒 سیستەمی ئاسایشی پێشکەوتوو:</p>
-                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;">بۆ چوونەژوورەوە، کلیک لەسەر دوگمەی خوارەوە بکە بۆ وەرگرتنی کۆدی پشتڕاستکردنەوە (OTP) لە بۆتی تێلیگرامەکەت.</p>
+                    <p style="color: #38bdf8; font-size: 14px; font-weight: 600;">🔒 ناوچەی تایبەتی بەڕێوەبەر:</p>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;">تکایە پاسوێردی تایبەتی ئەدمین بنووسە بۆ کردنەوەی پانێڵەکە.</p>
                 </div>
-                
-                <a href="https://t.me/Yarikonkan_bot?start=admin_login" target="_blank" class="btn btn-telegram" style="margin-bottom: 15px;">
-                    🤖 داواکردنی کۆدی چوونەژوورەوە لە بۆت
-                </a>
 
                 <div class="form-group">
-                    <label>کۆدی نهێنی تێلیگرام بنووسە:</label>
-                    <input type="text" id="adminTelegramCode" class="form-control" placeholder="کۆدە 6 ژمارەیییەکە لێرە بنووسە...">
+                    <label>پاسوێردی ئەدمین:</label>
+                    <input type="password" id="adminPasswordInput" class="form-control" placeholder="پاسوێرد لێرە بنووسە...">
                 </div>
-                <button onclick="checkTelegramAdminLogin()" class="btn" style="background: var(--accent-green); color: #fff;">پشکنین و چوونەژوورەوە 🔓</button>
+                <button onclick="checkAdminLogin()" class="btn" style="background: var(--accent-green); color: #fff;">چوونەژوورەوە 🔓</button>
             </div>
 
             <div class="admin-dashboard" id="adminDashboard">
                 <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
-                    <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت، ئەدمین! ✅ (سکیوریتی فعالە)</h3>
+                    <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت، ئەدمین! ✅</h3>
                     <p style="color: var(--text-muted); font-size: 13px;">ئێستا دەتوانیت هەموو شتێکی سایتەکە دەستکاری بکەیت.</p>
                 </div>
 
@@ -614,8 +610,8 @@
     </footer>
 
     <script>
-        // پاسوێردی نهێنی تێلیگرام (دەتوانیت لێرە ژمارەی تێلیگرامی خۆت یان کۆدی نهێنی سکیوریتی بنووسیت)
-        const ADMIN_TELEGRAM_SECRET_CODE = "998877"; 
+        // پاسوێردی نهێنی ئەدمین (دەتوانیت لێرە بیگۆڕیت بۆ هەر شتێکی تر کە دەتەوێت)
+        const ADMIN_PASSWORD = "indad793@"; 
 
         const defaultData = {
             heroTitle: "فرۆشگای یاریکۆنکان",
@@ -666,12 +662,12 @@
         };
 
         function getStoreData() {
-            const data = localStorage.getItem('yarikonkan_store_data_v8');
+            const data = localStorage.getItem('yarikonkan_store_data_v9');
             return data ? JSON.parse(data) : defaultData;
         }
 
         function saveStoreData(data) {
-            localStorage.setItem('yarikonkan_store_data_v8', JSON.stringify(data));
+            localStorage.setItem('yarikonkan_store_data_v9', JSON.stringify(data));
             renderSite();
         }
 
@@ -898,22 +894,22 @@
 
         function resetToDefault() {
             if(confirm('دڵنیایت دەتەوێت هەموو شتێک بگەرێنیتەوە سەر دۆخی سەرەتایی؟')) {
-                localStorage.removeItem('yarikonkan_store_data_v8');
+                localStorage.removeItem('yarikonkan_store_data_v9');
                 renderSite();
                 alert('گەڕایەوە سەر سەرەتا!');
             }
         }
 
-        function checkTelegramAdminLogin() {
-            const code = document.getElementById('adminTelegramCode').value.trim();
-            if(code === ADMIN_TELEGRAM_SECRET_CODE) {
+        function checkAdminLogin() {
+            const pass = document.getElementById('adminPasswordInput').value.trim();
+            if(pass === ADMIN_PASSWORD) {
                 sessionStorage.setItem('yarikonkan_admin_logged', 'true');
                 document.getElementById('adminLoginBox').style.display = 'none';
                 document.getElementById('adminDashboard').style.display = 'block';
                 renderAdminLists();
-                alert('بە سەرکەوتوویی و لەڕێگەی بۆتەوە چوویە ژوورەوە!');
+                alert('بە سەرکەوتوویی چوویە ژوورەوە بۆ ئەدمین پانێڵ! ✅');
             } else {
-                alert('کۆدی تێلیگرام هەڵەیە! تکایە سەردانی بۆت بکە بۆ وەرگرتنی کۆدی ڕاست.');
+                alert('پاسوێردی ئەدمین هەڵەیە! تکایە دووبارە هەوڵ بدەوە.');
             }
         }
 
@@ -921,7 +917,7 @@
             sessionStorage.removeItem('yarikonkan_admin_logged');
             document.getElementById('adminDashboard').style.display = 'none';
             document.getElementById('adminLoginBox').style.display = 'block';
-            document.getElementById('adminTelegramCode').value = '';
+            document.getElementById('adminPasswordInput').value = '';
             alert('چوویتە دەرەوە!');
         }
 
