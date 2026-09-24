@@ -85,7 +85,6 @@
             color: var(--primary);
         }
 
-        /* Floating Telegram Button */
         .floating-telegram {
             position: fixed;
             bottom: 30px;
@@ -117,7 +116,6 @@
             60% { transform: translateY(-5px); }
         }
 
-        /* Live Purchase Toast Notification */
         .live-toast {
             position: fixed;
             bottom: 30px;
@@ -155,7 +153,6 @@
             color: var(--text-muted);
         }
 
-        /* Urgent Call-to-Action Banner */
         .urgent-banner {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(139, 92, 246, 0.15));
             border: 1px dashed var(--primary);
@@ -205,7 +202,6 @@
             margin-bottom: 30px;
         }
 
-        /* Features / Trust Badges Bar */
         .features-bar {
             max-width: 1100px;
             margin: 20px auto;
@@ -458,6 +454,7 @@
             padding: 20px;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.05);
+            list-style: none;
         }
 
         .steps li {
@@ -602,12 +599,10 @@
 </head>
 <body>
 
-    <!-- Floating Telegram Button -->
     <a href="https://t.me/ind4d?text=سڵاو،%20دەمەوێت%20پرسیار%20بکەم%20یان%20ئەکاونتێک%20حێجز%20بکەم" target="_blank" class="floating-telegram" title="پەیوەندی لە تێلیگرام">
         💬
     </a>
 
-    <!-- Live Purchase Toast Notification -->
     <div class="live-toast" id="liveToast">
         <div class="toast-icon">⚡</div>
         <div class="toast-text">
@@ -638,7 +633,6 @@
         <a href="https://t.me/ind4d?text=سڵاو،%20هەر%20ئێستا%20پرسیارێکم%20هەیە%20یان%20دەمەوێت%20ئەکاونتێک%20حێجز%20بکەم" target="_blank" class="btn btn-telegram" style="max-width: 320px; margin: 0 auto; font-size: 18px;">💬 هەر پرسیارێکت هەیە؟ نامە بنێرە</a>
     </section>
 
-    <!-- Features / Trust Badges Bar -->
     <div class="features-bar">
         <div class="feature-box">
             <span>⚡</span>
@@ -727,28 +721,38 @@
             </a>
         </div>
 
+        <!-- Payment Section with FIB and FastPay -->
         <div class="payment-section" id="payment">
-            <h2 style="color: var(--primary); margin-bottom: 10px;">💳 چۆنیەتی پارەدان و ناردنی پارە (FIB)</h2>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">بەهۆی سیستمی بانکییەوە، سەرەتا پارەکە دەگوازیتەوە و پاشان وەصڵەکەی بۆ ئێمە دەنێریت.</p>
+            <h2 style="color: var(--primary); margin-bottom: 10px;">💳 چۆنیەتی پارەدان و گواستنەوەی پارە</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">دەتوانیت پارەکە لە ڕێگەی FIB یان FastPayـەوە بنێریت و پاشان وەصڵەکەی بۆ ئێمە بنێریت.</p>
             
             <ul class="steps">
-                <li>١. ئەپی <b>FIB</b> لە مۆبایلەکەت بکەرەوە.</li>
-                <li>٢. ژمارەی هەژماری خوارەوە کۆپی بکە و پارەکە بنێرە.</li>
+                <li>١. لە ئەپی <b>FIB</b> یان <b>FastPay</b> بڕی پارەکە بنێرە.</li>
+                <li>٢. ژمارەی خوارەوە کۆپی بکە و پارەکە بگوازەوە.</li>
                 <li>٣. سکرینشۆتی وەصڵەکە بگرە و لە تێلیگرام بۆمان بنێرە.</li>
             </ul>
 
-            <div class="payment-box">
-                <div style="font-size: 15px; color: var(--text-main); font-weight: 700; margin-bottom: 5px;">ژمارەی هەژماری FIB (کلیک بکە بۆ کۆپیکردن):</div>
-                
-                <div class="fib-link" onclick="copyFIB('7517936978')">
-                    <div class="fib-number" id="fib-num">7517936978</div>
-                    <div class="fib-hint" id="fib-hint-text">👉 کلیک لێرە بکە بۆ کۆپیکردنی ژمارە</div>
+            <!-- FIB Box -->
+            <div class="payment-box" style="margin-bottom: 15px;">
+                <div style="font-size: 15px; color: var(--accent-green); font-weight: 700; margin-bottom: 5px;">ژمارەی هەژماری FIB:</div>
+                <div class="fib-link" onclick="copyInfo('7517936978', 'fib-hint-1')" style="border-color: var(--accent-green);">
+                    <div class="fib-number" style="color: var(--accent-green);">7517936978</div>
+                    <div class="fib-hint" id="fib-hint-1">👉 کلیک لێرە بکە بۆ کۆپیکردنی ژمارەی FIB</div>
                 </div>
-
-                <a href="https://t.me/ind4d?text=سڵاو،%20پارەم%20نارد%20و%20ئەمەش%20وەصڵی%20FIB" target="_blank" class="btn btn-telegram" style="margin-top: 15px;">
-                    📤 ناردنی وەصڵ بۆ تێلیگرام (@ind4d)
-                </a>
             </div>
+
+            <!-- FastPay Box -->
+            <div class="payment-box" style="border-color: #0284c7;">
+                <div style="font-size: 15px; color: #38bdf8; font-weight: 700; margin-bottom: 5px;">ژمارەی فاستپەی (FastPay):</div>
+                <div class="fib-link" onclick="copyInfo('7504506173', 'fib-hint-2')" style="border-color: #0284c7; background: rgba(2, 132, 199, 0.05);">
+                    <div class="fib-number" style="color: #38bdf8; font-size: 24px;">7504506173</div>
+                    <div class="fib-hint" id="fib-hint-2">👉 کلیک لێرە بکە بۆ کۆپیکردنی ژمارەی فاستپەی</div>
+                </div>
+            </div>
+
+            <a href="https://t.me/ind4d?text=سڵاو،%20پارەم%20نارد%20و%20ئەمەش%20وەصڵی%20پارەدانەکەم" target="_blank" class="btn btn-telegram" style="margin-top: 20px; max-width: 400px; margin-left: auto; margin-right: auto;">
+                📤 ناردنی وەصڵ بۆ تێلیگرام (@ind4d)
+            </a>
         </div>
 
         <div class="faq-section" id="faq">
@@ -760,7 +764,7 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">دوای ناردنی پارە بە FIB، چەندە دەخایەنێت تا ئەکاونتەکەم پێ بگات؟</div>
+                <div class="faq-question">دوای ناردنی پارە، چەندە دەخایەنێت تا ئەکاونتەکەم پێ بگات؟</div>
                 <div class="faq-answer">لە کاتی ناردنی وەصڵی پارەدان لە تێلیگرام، زۆرترین ماوەی چاوەڕوانی تەنها 2 بۆ 5 خولەکە و زانیارییەکانت پێ دەگات.</div>
             </div>
 
@@ -829,13 +833,14 @@
     </footer>
 
     <script>
-        function copyFIB(text) {
+        function copyInfo(text, hintId) {
             navigator.clipboard.writeText(text).then(function() {
-                const hint = document.getElementById('fib-hint-text');
-                hint.innerText = "✅ ژمارەی هەژمار کۆپی کرا!";
+                const hint = document.getElementById(hintId);
+                const originalText = hint.innerText;
+                hint.innerText = "✅ ژمارەکە بە سەرکەوتوویی کۆپی کرا!";
                 hint.style.color = "#10b981";
                 setTimeout(function() {
-                    hint.innerText = "👉 کلیک لێرە بکە بۆ کۆپیکردنی ژمارە";
+                    hint.innerText = originalText;
                     hint.style.color = "#9ca3af";
                 }, 3000);
             });
@@ -850,7 +855,6 @@
             slides[currentIndex].classList.add('active');
         }, 5000);
 
-        // Live Purchase Toast Simulation
         const buyers = [
             {name: "میران لە سلێمانی", action: "پاکێجی 200k ی کڕی! 🔥"},
             {name: "دانا لە هەولێر", action: "کانی 200k ی حێجز کرد! ⚡"},
@@ -875,9 +879,8 @@
             }, 4000);
         }
 
-        // Show toast every 8 seconds
         setInterval(showLiveToast, 8000);
-        setTimeout(showLiveToast, 3000); // First show after 3 seconds
+        setTimeout(showLiveToast, 3000);
 
         function addNewReview(event) {
             event.preventDefault();
