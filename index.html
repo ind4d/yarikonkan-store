@@ -18,6 +18,7 @@
             --accent-green: #10b981;
             --accent-blue: #0284c7;
             --accent-purple: #8b5cf6;
+            --accent-red: #ef4444;
         }
 
         * {
@@ -104,6 +105,715 @@
             text-decoration: none;
             animation: bounceFloat 2s infinite;
         }
+
+        .floating-telegram:hover {
+            transform: scale(1.1);
+            background: #0369a1;
+        }
+
+        @keyframes bounceFloat {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .live-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 12px 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+        }
+
+        .live-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon { font-size: 24px; }
+        .toast-text h4 { font-size: 14px; color: #fff; }
+        .toast-text p { font-size: 12px; color: var(--text-muted); }
+
+        .urgent-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(139, 92, 246, 0.15));
+            border: 1px dashed var(--primary);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 20px auto;
+            max-width: 1100px;
+            text-align: center;
+        }
+
+        .urgent-banner p { color: #fff; font-size: 16px; font-weight: 700; }
+        .urgent-banner span { color: var(--primary); }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { color: var(--text-muted); font-size: 18px; margin-bottom: 30px; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 4px solid var(--primary);
+            padding-right: 12px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .card h3 { font-size: 20px; margin-bottom: 15px; color: #fff; margin-top: 10px; }
+
+        .live-stock-box {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stock-pulse {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: stockPulse 1.5s infinite;
+        }
+
+        @keyframes stockPulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .feature-list { list-style: none; margin-bottom: 20px; }
+        .feature-list li { margin: 6px 0; color: var(--text-muted); font-size: 14px; display: flex; align-items: center; gap: 8px; }
+        .feature-list li b { color: var(--text-main); }
+
+        .package-note {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px dashed rgba(139, 92, 246, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #c4b5fd;
+            margin-bottom: 15px;
+        }
+
+        .price-tag { font-size: 24px; font-weight: 800; color: var(--accent-green); margin: 15px 0; }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), #d97706);
+            color: #000;
+            font-weight: 700;
+            text-align: center;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover { opacity: 0.95; transform: scale(1.02); }
+        .btn-telegram { background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        /* Admin Panel Styles (Advanced Step 3) */
+        .admin-section {
+            background: rgba(15, 23, 42, 0.95);
+            border: 2px dashed var(--primary);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .admin-login-box, .admin-dashboard {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .admin-dashboard { display: none; }
+
+        .form-group { margin-bottom: 15px; text-align: right; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--text-main); font-size: 14px; font-weight: 600; }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); }
+
+        .admin-package-row {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .payment-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .payment-box {
+            background: rgba(0,0,0,0.4);
+            border: 2px dashed var(--primary);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 15px auto 0;
+        }
+
+        .steps {
+            text-align: right;
+            margin: 20px auto;
+            max-width: 600px;
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 12px;
+            list-style: none;
+        }
+
+        .steps li { margin: 8px 0; color: var(--text-muted); font-size: 14px; }
+
+        .fib-link {
+            display: block;
+            background: #000;
+            border: 1px solid var(--accent-green);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .fib-number { font-size: 24px; font-weight: 800; color: var(--accent-green); letter-spacing: 2px; }
+        .fib-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+        .faq-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .faq-item { margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; text-align: right; }
+        .faq-question { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .faq-answer { font-size: 14px; color: var(--text-muted); }
+
+        .reviews-slider-container {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            overflow: hidden;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .review-slide { display: none; text-align: center; width: 100%; }
+        .review-slide.active { display: block; }
+        .review-stars { color: var(--primary); font-size: 18px; margin-bottom: 8px; }
+        .review-text-lg { font-size: 16px; color: var(--text-main); margin-bottom: 10px; font-style: italic; }
+        .review-author-lg { font-weight: 700; color: var(--primary); font-size: 14px; }
+
+        footer { text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <a href="https://t.me/ind4d?text=سڵاو،%20دەمەوێت%20پرسیار%20بکەم" target="_blank" class="floating-telegram" title="پەیوەندی لە تێلیگرام">💬</a>
+
+    <div class="live-toast" id="liveToast">
+        <div class="toast-icon">⚡</div>
+        <div class="toast-text">
+            <h4 id="toastUser">کەسێک لە هەولێر</h4>
+            <p id="toastAction">پاکێجی 200k ی کڕی!</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">⚡ یاریکۆنکان | Yarikonkan</a>
+            <ul class="nav-links">
+                <li><a href="#packages">پاکێجەکان</a></li>
+                <li><a href="#payment">چۆنیەتی کڕین</a></li>
+                <li><a href="#reviews">ڕای کڕیاران</a></li>
+                <li><a href="#admin">ئەدمین پانێل</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="urgent-banner">
+        <p id="bannerTextDisplay">🚨 <b>ئاگاداری گرنگ:</b> ئەکاونتەکانی 200k یەکجار خێرا دەفرۆشرێن! هەر ئێستا <span>بۆ حێجزکردن</span> پەیوەندیمان پێوە بکە 💬</p>
+    </div>
+
+    <section class="hero">
+        <h1>فرۆشگای یاریکۆنکان</h1>
+        <p>خێرا‌ترین و متمانەپێکراوترین شوێن بۆ دابینکردنی کۆین و ئەکاونت.</p>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title" id="packages">📦 پاکێجەکان و کانزای کۆین</h2>
+        
+        <!-- Packages Container (Dynamically rendered from localStorage/Admin Panel) -->
+        <div class="grid-cards" id="packagesContainer">
+            <!-- Rendered by JavaScript -->
+        </div>
+
+        <!-- Payment Section with FIB and FastPay -->
+        <div class="payment-section" id="payment">
+            <h2 style="color: var(--primary); margin-bottom: 10px;">💳 چۆنیەتی پارەدان و گواستنەوەی پارە</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">پارەکە لە ڕێگەی FIB یان FastPay بنێرە و وەصڵەکە لە تێلیگرام بۆمان بنێرە.</p>
+            
+            <ul class="steps">
+                <li>١. پارەکە بنێرە بۆ یەکێک لە ژمارەکانی خوارەوە.</li>
+                <li>٢. سکرینشۆتی وەصڵەکە بۆ تێلیگرام بنێرە.</li>
+            </ul>
+
+            <!-- FIB Box -->
+            <div class="payment-box">
+                <div style="font-size: 14px; color: var(--accent-green); font-weight: 700; margin-bottom: 4px;">ژمارەی هەژماری FIB:</div>
+                <div class="fib-link" onclick="copyInfo(document.getElementById('fibNumDisplay').innerText, 'fib-hint-1')">
+                    <div class="fib-number" id="fibNumDisplay" style="color: var(--accent-green);">7517936978</div>
+                    <div class="fib-hint" id="fib-hint-1">👉 کلیک لێرە بکە بۆ کۆپیکردن</div>
+                </div>
+            </div>
+
+            <!-- FastPay Box -->
+            <div class="payment-box" style="border-color: #0284c7;">
+                <div style="font-size: 14px; color: #38bdf8; font-weight: 700; margin-bottom: 4px;">ژمارەی فاستپەی (FastPay):</div>
+                <div class="fib-link" onclick="copyInfo(document.getElementById('fastpayNumDisplay').innerText, 'fib-hint-2')" style="border-color: #0284c7;">
+                    <div class="fib-number" id="fastpayNumDisplay" style="color: #38bdf8;">7504506173</div>
+                    <div class="fib-hint" id="fib-hint-2">👉 کلیک لێرە بکە بۆ کۆپیکردن</div>
+                </div>
+            </div>
+
+            <a href="https://t.me/ind4d?text=سڵاو،%20پارەم%20نارد%20و%20وەصڵەکەم%20لێرەیە" target="_blank" class="btn btn-telegram" style="margin-top: 20px; max-width: 350px; margin-left: auto; margin-right: auto;">
+                📤 ناردنی وەصڵ بۆ تێلیگرام (@ind4d)
+            </a>
+        </div>
+
+        <div class="faq-section" id="faq">
+            <h2 style="color: var(--primary); margin-bottom: 15px; font-size: 20px; text-align: right;">❓ پرسیارە باوەکان</h2>
+            <div class="faq-item">
+                <div class="faq-question">چۆن ئەکاونت حێجز بکەم؟</div>
+                <div class="faq-answer">ڕاستەوخۆ لە ڕێگەی تێلیگرامەوە نامە بنێرە.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">چەندە دەخایەنێت تا پاکێجەکەم پێ بگات؟</div>
+                <div class="faq-answer">تەنها 2 بۆ 5 خولەک دوای ناردنی وەصڵ.</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="reviews" style="margin-top: 40px;">⭐ ڕای کڕیاران</h2>
+        <div class="reviews-slider-container" id="sliderContainer">
+            <div class="review-slide active">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text-lg">"زۆر سوپاس، خێرا و متمانەپێکراو!"</div>
+                <div class="review-author-lg">👤 میران بەختیار (سلێمانی)</div>
+            </div>
+            <div class="review-slide">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text-lg">"بەڕاستی باشترین فرۆشگای کۆین و ئەکاونتە."</div>
+                <div class="review-author-lg">👤 دانا ئەحمەد (هەولێر)</div>
+            </div>
+        </div>
+
+        <!-- Advanced Admin Panel Section (Step 3) -->
+        <div class="admin-section" id="admin">
+            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێلی پێشکەوتوو (هەنگاوی ٣)</h2>
+            
+            <!-- Login Form -->
+            <div class="admin-login-box" id="adminLoginBox">
+                <p style="color: var(--text-muted); text-align: center; margin-bottom: 15px; font-size: 14px;">تکایە تێپەڕەوشە (Password) بنوسە بۆ چوونە ژوورەوە (پاسوێردی سەرەتایی: 1234):</p>
+                <div class="form-group">
+                    <input type="password" id="adminPass" class="form-control" placeholder="تێپەڕەوشە...">
+                </div>
+                <button onclick="checkAdminLogin()" class="btn">چوونە ژوورەوە 🔓</button>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="admin-dashboard" id="adminDashboard">
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                    <h3 style="color: var(--accent-green); font-size: 16px;">بەخێر هاتیت، بەڕێوەبەر! ✅</h3>
+                    <p style="color: var(--text-muted); font-size: 13px;">هەموو گۆڕانکارییەکان ڕاستەوخۆ لە سایتەکەدا نوێ دەبنەوە.</p>
+                </div>
+
+                <!-- Global Settings -->
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📌 ڕێکخستنی گشتی و ژمارەکان</h3>
+                    <div class="form-group">
+                        <label>گۆڕینی نامەی ئاگاداری سەرەوە:</label>
+                        <input type="text" id="settingBanner" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>ژمارەی فاستپەی:</label>
+                        <input type="text" id="settingFastpay" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>ژمارەی FIB:</label>
+                        <input type="text" id="settingFib" class="form-control">
+                    </div>
+                    <button onclick="saveGlobalSettings()" class="btn" style="background: var(--accent-green); color: #fff;">پاشەکەوتکردنی ڕێکخستنە گشتییەکان 💾</button>
+                </div>
+
+                <!-- Manage Packages -->
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #fff; font-size: 15px; margin-bottom: 10px;">📦 کۆنتڕۆڵی پاکێجەکان</h3>
+                    <div id="adminPackagesList">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <button onclick="resetToDefault()" class="btn" style="background: var(--accent-red); color: #fff; margin-top: 10px;">گەڕانەوە بۆ دۆخی سەرەتایی 🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>هەموو مافێک پارێزراوە بۆ © 2026 فرۆشگای یاریکۆنکان (Yarikonkan)</p>
+    </footer>
+
+    <script>
+        // Default Data
+        const defaultData = {
+            banner: "🚨 <b>ئاگاداری گرنگ:</b> ئەکاونتەکانی 200k یەکجار خێرا دەفرۆشرێن! هەر ئێستا <span>بۆ حێجزکردن</span> پەیوەندیمان پێوە بکە 💬",
+            fastpay: "7504506173",
+            fib: "7517936978",
+            packages: [
+                {
+                    id: 1,
+                    badge: "پڕخواستترین 🔥",
+                    badgeColor: "rgba(139, 92, 246, 0.15)",
+                    badgeTextColor: "var(--accent-purple)",
+                    borderColor: "var(--accent-purple)",
+                    title: "200k Coins + 3 Gifts",
+                    stockText: "تەنها <b>3 ئەکاونت</b> ماوە!",
+                    note: "📌 ئەکاونتی ئۆفەرکراو لەگەڵ 200k کۆین و 3 سەقەر.",
+                    features: ["🔹 بڕی کۆین: <b>200,000 Coins</b>", "🔹 دیاری: <b>3 Gifts</b>"],
+                    price: "9,000 دینار",
+                    btnText: "کڕین و حێجزکردن",
+                    btnBg: "linear-gradient(135deg, var(--accent-purple), #7c3aed)",
+                    link: "https://t.me/ind4d?text=سڵاو،%20پاکێجی%20200k%20مەوێت"
+                },
+                {
+                    id: 2,
+                    badge: "سەرەتایی",
+                    badgeColor: "rgba(245, 158, 11, 0.15)",
+                    badgeTextColor: "var(--primary)",
+                    borderColor: "var(--card-border)",
+                    title: "Basic Mine",
+                    stockText: "",
+                    note: "",
+                    features: ["🔹 کۆینی گشتی: <b>211,058 Coins</b>", "🔹 وەرگرتنی دەستبەجێ: <b>61,898 Coins</b>"],
+                    price: "7,500 دینار",
+                    btnText: "پرسیار و کڕین",
+                    btnBg: "",
+                    link: "https://t.me/ind4d?text=سڵاو،%20Basic%20Mine%20مەوێت"
+                },
+                {
+                    id: 3,
+                    badge: "ناوەند",
+                    badgeColor: "rgba(2, 132, 199, 0.15)",
+                    badgeTextColor: "var(--accent-blue)",
+                    borderColor: "var(--card-border)",
+                    title: "Intermediate Mine",
+                    stockText: "",
+                    note: "",
+                    features: ["🔹 کۆینی گشتی: <b>2,410,980 Coins</b>", "🔹 وەرگرتنی دەستبەجێ: <b>771,480 Coins</b>"],
+                    price: "70,000 دینار",
+                    btnText: "پرسیار و کڕین",
+                    btnBg: "linear-gradient(135deg, var(--accent-blue), #0369a1)",
+                    link: "https://t.me/ind4d?text=سڵاو،%20Intermediate%20Mine%20مەوێت"
+                },
+                {
+                    id: 4,
+                    badge: "تایبەت",
+                    badgeColor: "rgba(245, 158, 11, 0.15)",
+                    badgeTextColor: "var(--primary)",
+                    borderColor: "var(--primary)",
+                    title: "VIP Special Pack",
+                    stockText: "",
+                    note: "",
+                    features: ["🔹 <b>خزمەتگوزاری تایبەت</b> و خێرا", "🔹 دابینکردنی کۆین بەخواستی خۆت"],
+                    price: "پەیوەندی بکە",
+                    btnText: "پەیوەندی کردن",
+                    btnBg: "",
+                    link: "https://t.me/ind4d?text=سڵاو،%20پاکێجی%20VIP%20مەوێت"
+                }
+            ]
+        };
+
+        // Load data from localStorage or fallback to default
+        function getStoreData() {
+            const data = localStorage.getItem('yarikonkan_store_data');
+            return data ? JSON.parse(data) : defaultData;
+        }
+
+        function saveStoreData(data) {
+            localStorage.setItem('yarikonkan_store_data', JSON.stringify(data));
+            renderSite();
+        }
+
+        // Render everything on site
+        function renderSite() {
+            const data = getStoreData();
+            
+            // Banner
+            document.getElementById('bannerTextDisplay').innerHTML = data.banner;
+            
+            // Payment numbers
+            document.getElementById('fastpayNumDisplay').innerText = data.fastpay;
+            document.getElementById('fibNumDisplay').innerText = data.fib;
+
+            // Packages
+            const container = document.getElementById('packagesContainer');
+            container.innerHTML = "";
+
+            data.packages.forEach((pkg, index) => {
+                let cardHTML = `
+                    <div class="card" style="border-color: ${pkg.borderColor};">
+                        <div class="card-badge" style="background: ${pkg.badgeColor}; color: ${pkg.badgeTextColor};">${pkg.badge}</div>
+                        <h3>${pkg.title}</h3>
+                `;
+
+                if(pkg.stockText) {
+                    cardHTML += `
+                        <div class="live-stock-box">
+                            <span>⚠️ <b>${pkg.stockText}</b></span>
+                            <div class="stock-pulse"></div>
+                        </div>
+                    `;
+                }
+
+                if(pkg.note) {
+                    cardHTML += `<div class="package-note">${pkg.note}</div>`;
+                }
+
+                cardHTML += `<ul class="feature-list">`;
+                pkg.features.forEach(f => {
+                    cardHTML += `<li>${f}</li>`;
+                });
+                cardHTML += `</ul>`;
+
+                cardHTML += `
+                        <div class="price-tag">${pkg.price}</div>
+                        <a href="${pkg.link}" target="_blank" class="btn" style="${pkg.btnBg ? 'background: ' + pkg.btnBg + '; color: #fff;' : ''}">${pkg.btnText}</a>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+
+            // Also update admin panel inputs if open
+            document.getElementById('settingBanner').value = data.banner.replace(/<[^>]*>?/gm, ''); // simple text cleanup for input if needed, or leave raw
+            document.getElementById('settingFastpay').value = data.fastpay;
+            document.getElementById('settingFib').value = data.fib;
+
+            renderAdminPackagesList();
+        }
+
+        function renderAdminPackagesList() {
+            const data = getStoreData();
+            const listContainer = document.getElementById('adminPackagesList');
+            listContainer.innerHTML = "";
+
+            data.packages.forEach((pkg, index) => {
+                listContainer.innerHTML += `
+                    <div class="admin-package-row">
+                        <div>
+                            <strong style="color: #fff;">${pkg.title}</strong><br>
+                            <span style="color: var(--accent-green); font-size: 13px;">نرخ: ${pkg.price}</span>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="editPrice_${index}" value="${pkg.price}" class="form-control" style="width: 120px; padding: 6px;" placeholder="نرخی نوێ">
+                            <button onclick="updatePackagePrice(${index})" class="btn" style="padding: 6px 12px; font-size: 13px; background: var(--accent-blue); color: #fff;">گۆڕین</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function updatePackagePrice(index) {
+            const newPrice = document.getElementById(`editPrice_${index}`).value;
+            let data = getStoreData();
+            data.packages[index].price = newPrice;
+            saveStoreData(data);
+            alert('نرخی پاکێجەکە بە سەرکەوتوویی نوێ کرایەوە!');
+        }
+
+        function saveGlobalSettings() {
+            let data = getStoreData();
+            data.fastpay = document.getElementById('settingFastpay').value;
+            data.fib = document.getElementById('settingFib').value;
+            saveStoreData(data);
+            alert('ڕێکخستنە گشتییەکان پاشەکەوت کران!');
+        }
+
+        function resetToDefault() {
+            if(confirm('دڵنیایت دەتەوێت هەموو شتێک بگەرێنیتەوە سەر دۆخی بنەڕەتی؟')) {
+                localStorage.removeItem('yarikonkan_store_data');
+                renderSite();
+                alert('گەڕایەوە سەر دۆخی سەرەتایی!');
+            }
+        }
+
+        // Admin login logic
+        function checkAdminLogin() {
+            const pass = document.getElementById('adminPass').value;
+            if(pass === "indad793@") { // دەتوانیت لێرە پاسوێردەکەی خۆت بگۆڕیت
+                document.getElementById('adminLoginBox').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                renderAdminPackagesList();
+                alert('بە سەرکەوتوویی چوویە ژوورەوە بۆ ئەدمین پانێڵی پێشکەوتوو!');
+            } else {
+                alert('تێپەڕەوشە هەڵەیە!');
+            }
+        }
+
+        // Copy utility
+        function copyInfo(text, hintId) {
+            navigator.clipboard.writeText(text).then(function() {
+                const hint = document.getElementById(hintId);
+                const originalText = hint.innerText;
+                hint.innerText = "✅ کۆپی کرا!";
+                hint.style.color = "#10b981";
+                setTimeout(function() {
+                    hint.innerText = originalText;
+                    hint.style.color = "#9ca3af";
+                }, 3000);
+            });
+        }
+
+        // Review slider
+        let currentIndex = 0;
+        let slides = document.querySelectorAll('.review-slide');
+        setInterval(() => {
+            if(slides.length > 0) {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }
+        }, 5000);
+
+        // Live toast simulation
+        const buyers = [
+            {name: "میران لە سلێمانی", action: "پاکێجی 200k ی کڕی! 🔥"},
+            {name: "دانا لە هەولێر", action: "کانی 200k ی حێجز کرد! ⚡"},
+            {name: "ئارام لە دهۆک", action: "Basic Mine ی چالاک کرد! 💎"}
+        ];
+
+        function showLiveToast() {
+            const toast = document.getElementById('liveToast');
+            const userEl = document.getElementById('toastUser');
+            const actionEl = document.getElementById('toastAction');
+
+            const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
+            userEl.innerText = randomBuyer.name;
+            actionEl.innerText = randomBuyer.action;
+
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 4000);
+        }
+
+        setInterval(showLiveToast, 9000);
+
+        // Initial render on page load
+        window.onload = function() {
+            renderSite();
+        };
+    </script>
+</body>
+</html>
 
         .floating-telegram:hover {
             transform: scale(1.1);
