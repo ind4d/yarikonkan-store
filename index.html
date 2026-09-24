@@ -410,7 +410,7 @@
 </head>
 <body>
 
-    <a href="https://t.me/Yarikonkan_bot?start=start" target="_blank" class="floating-telegram" title="پەیوەندی لە بۆتی تێلیگرام">🤖</a>
+    <a href="https://t.me/Ind4d" target="_blank" class="floating-telegram" title="پەیوەندی ڕاستەوخۆ لە تێلیگرام">🤖</a>
 
     <div class="live-toast" id="liveToast">
         <div class="toast-icon">⚡</div>
@@ -447,11 +447,11 @@
 
         <div class="payment-section" id="payment">
             <h2 style="color: var(--primary); margin-bottom: 10px;">💳 چۆنیەتی پارەدان و گواستنەوەی پارە</h2>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">پارەکە لە ڕێگەی FIB یان FastPay بنێرە و وەصڵەکە بۆ بۆتی فەرمیمان بنێرە.</p>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">پارەکە لە ڕێگەی FIB یان FastPay بنێرە و وەصڵەکە ڕاستەوخۆ بۆ چاتی تێلیگرامی ئێمە بنێرە.</p>
             
             <ul class="steps">
                 <li>١. پارەکە بنێرە بۆ یەکێک لە ژمارەکانی خوارەوە.</li>
-                <li>٢. سکرینشۆتی وەصڵەکە بۆ بۆتی تێلیگرام بنێرە.</li>
+                <li>٢. سکرینشۆتی وەصڵەکە بۆ تێلیگرامی ئێمە بنێرە.</li>
             </ul>
 
             <div class="payment-box">
@@ -470,8 +470,8 @@
                 </div>
             </div>
 
-            <a href="https://t.me/Yarikonkan_bot?start=receipt" target="_blank" class="btn btn-telegram" style="margin-top: 20px; max-width: 350px; margin-left: auto; margin-right: auto;">
-                📤 ناردنی وەصڵ بۆ بۆتی تێلیگرام (@Yarikonkan_bot)
+            <a href="https://t.me/Ind4d" target="_blank" class="btn btn-telegram" style="margin-top: 20px; max-width: 350px; margin-left: auto; margin-right: auto;">
+                📤 ناردنی وەصڵ بۆ تێلیگرامی ئێمە (@Ind4d)
             </a>
         </div>
 
@@ -481,9 +481,7 @@
         </div>
 
         <h2 class="section-title" id="reviews" style="margin-top: 40px;">⭐ ڕای کڕیاران</h2>
-        <div class="reviews-slider-container" id="sliderContainer">
-            <!-- Reviews injected here -->
-        </div>
+        <div class="reviews-slider-container" id="sliderContainer"></div>
 
         <!-- Admin Panel Section -->
         <div class="admin-section" id="admin">
@@ -610,8 +608,8 @@
     </footer>
 
     <script>
-        // پاسوێردی نهێنی ئەدمین (دەتوانیت لێرە بیگۆڕیت بۆ هەر شتێکی تر کە دەتەوێت)
-        const ADMIN_PASSWORD = "indad793@"; 
+        const ADMIN_PASSWORD = "Yarikonkan@Admin2026"; 
+        const TG_USERNAME = "Ind4d";
 
         const defaultData = {
             heroTitle: "فرۆشگای یاریکۆنکان",
@@ -632,8 +630,7 @@
                     features: ["🔹 بڕی کۆین: <b>200,000 Coins</b>", "🔹 دیاری: <b>3 Gifts</b>"],
                     price: "9,000 دینار",
                     btnText: "کڕین و حێجزکردن",
-                    btnBg: "linear-gradient(135deg, var(--accent-purple), #7c3aed)",
-                    link: "https://t.me/Yarikonkan_bot?start=pkg_200k"
+                    btnBg: "linear-gradient(135deg, var(--accent-purple), #7c3aed)"
                 },
                 {
                     id: 2,
@@ -647,12 +644,11 @@
                     features: ["🔹 کۆینی گشتی: <b>211,058 Coins</b>", "🔹 وەرگرتنی دەستبەجێ: <b>61,898 Coins</b>"],
                     price: "7,500 دینار",
                     btnText: "پرسیار و کڕین",
-                    btnBg: "",
-                    link: "https://t.me/Yarikonkan_bot?start=pkg_basic"
+                    btnBg: ""
                 }
             ],
             faqs: [
-                {q: "چۆن ئەکاونت حێجز بکەم؟", a: "ڕاستەوخۆ لە ڕێگەی بۆتی تێلیگرامەوە نامە بنێرە."},
+                {q: "چۆن ئەکاونت حێجز بکەم؟", a: "ڕاستەوخۆ لە ڕێگەی تێلیگرامەوە نامە بنێرە."},
                 {q: "چەندە دەخایەنێت تا پاکێجەکەم پێ بگات؟", a: "تەنها 2 بۆ 5 خولەک دوای ناردنی وەصڵ."}
             ],
             reviews: [
@@ -662,12 +658,12 @@
         };
 
         function getStoreData() {
-            const data = localStorage.getItem('yarikonkan_store_data_v9');
+            const data = localStorage.getItem('yarikonkan_store_data_v10');
             return data ? JSON.parse(data) : defaultData;
         }
 
         function saveStoreData(data) {
-            localStorage.setItem('yarikonkan_store_data_v9', JSON.stringify(data));
+            localStorage.setItem('yarikonkan_store_data_v10', JSON.stringify(data));
             renderSite();
         }
 
@@ -684,6 +680,7 @@
             const container = document.getElementById('packagesContainer');
             container.innerHTML = "";
             data.packages.forEach((pkg) => {
+                let directLink = `https://t.me/${TG_USERNAME}?text=${encodeURIComponent('سڵاو، دەمەوێت ئەم پاکێجە بکڕم: ' + pkg.title + ' (' + pkg.price + ')')}`;
                 let cardHTML = `
                     <div class="card" style="border-color: ${pkg.borderColor || 'var(--card-border)'};">
                         <div class="card-badge" style="background: ${pkg.badgeColor || 'rgba(245, 158, 11, 0.15)'}; color: ${pkg.badgeTextColor || 'var(--primary)'};">${pkg.badge || 'پاکێج'}</div>
@@ -707,7 +704,7 @@
                 cardHTML += `</ul>`;
                 cardHTML += `
                         <div class="price-tag">${pkg.price}</div>
-                        <a href="${pkg.link || 'https://t.me/Yarikonkan_bot'}" target="_blank" class="btn" style="${pkg.btnBg ? 'background: ' + pkg.btnBg + '; color: #fff;' : ''}">${pkg.btnText || 'کڕین و پرسیار'}</a>
+                        <a href="${directLink}" target="_blank" class="btn" style="${pkg.btnBg ? 'background: ' + pkg.btnBg + '; color: #fff;' : ''}">${pkg.btnText || 'کڕین و پرسیار'}</a>
                     </div>
                 `;
                 container.innerHTML += cardHTML;
@@ -751,7 +748,6 @@
         function renderAdminLists() {
             const data = getStoreData();
 
-            // Packages Admin List
             const pkgList = document.getElementById('adminPackagesList');
             pkgList.innerHTML = "";
             data.packages.forEach((pkg, index) => {
@@ -766,7 +762,6 @@
                 `;
             });
 
-            // FAQ Admin List
             const faqList = document.getElementById('adminFaqList');
             faqList.innerHTML = "";
             data.faqs.forEach((faq, index) => {
@@ -780,7 +775,6 @@
                 `;
             });
 
-            // Reviews Admin List
             const revList = document.getElementById('adminReviewList');
             revList.innerHTML = "";
             data.reviews.forEach((rev, index) => {
@@ -832,8 +826,7 @@
                 features: features,
                 price: price,
                 btnText: "کڕین و پرسیار",
-                btnBg: "",
-                link: `https://t.me/Yarikonkan_bot?start=pkg_${encodeURIComponent(title)}`
+                btnBg: ""
             });
 
             saveStoreData(data);
@@ -894,7 +887,7 @@
 
         function resetToDefault() {
             if(confirm('دڵنیایت دەتەوێت هەموو شتێک بگەرێنیتەوە سەر دۆخی سەرەتایی؟')) {
-                localStorage.removeItem('yarikonkan_store_data_v9');
+                localStorage.removeItem('yarikonkan_store_data_v10');
                 renderSite();
                 alert('گەڕایەوە سەر سەرەتا!');
             }
