@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرۆشگای یاریکۆنکان - Yarikonkan Store</title>
+    <meta name="description" content="باشترین و متمانەپێکراوترین فرۆشگا بۆ کڕینی کۆین و ئەکاونتی یارییەکان بە خێراترین کات و باشترین نرخ.">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f59e0b;
+            --primary-glow: rgba(245, 158, 11, 0.4);
+            --bg-color: #090d16;
+            --card-bg: rgba(17, 24, 39, 0.85);
+            --card-border: rgba(245, 158, 11, 0.3);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-green: #10b981;
+            --accent-blue: #0284c7;
+            --accent-purple: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.08) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Floating Telegram Button */
+        .floating-telegram {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #0284c7;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 25px rgba(2, 132, 199, 0.6);
+            z-index: 9999;
+            transition: 0.3s;
+            text-decoration: none;
+            animation: bounceFloat 2s infinite;
+        }
+
+        .floating-telegram:hover {
+            transform: scale(1.1);
+            background: #0369a1;
+        }
+
+        @keyframes bounceFloat {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Live Purchase Toast Notification */
+        .live-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 12px 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+        }
+
+        .live-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            font-size: 24px;
+        }
+
+        .toast-text h4 {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .toast-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Urgent Call-to-Action Banner */
+        .urgent-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(139, 92, 246, 0.15));
+            border: 1px dashed var(--primary);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 20px auto;
+            max-width: 1100px;
+            text-align: center;
+            animation: pulseGlow 2s infinite;
+        }
+
+        .urgent-banner p {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .urgent-banner span {
+            color: var(--primary);
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Features / Trust Badges Bar */
+        .features-bar {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-box span {
+            font-size: 28px;
+        }
+
+        .feature-box div h5 {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .feature-box div p {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 4px solid var(--primary);
+            padding-right: 12px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .live-stock-box {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stock-pulse {
+            width: 10px;
+            height: 10px;
+            background: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            animation: stockPulse 1.5s infinite;
+        }
+
+        @keyframes stockPulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .feature-list li {
+            margin: 8px 0;
+            color: var(--text-muted);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-list li b {
+            color: var(--text-main);
+        }
+
+        .package-note {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px dashed rgba(139, 92, 246, 0.4);
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #c4b5fd;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .price-tag {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), #d97706);
+            color: #000;
+            font-weight: 700;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            opacity: 0.95;
+            transform: scale(1.02);
+        }
+
+        .btn-telegram {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .faq-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+            text-align: right;
+        }
+
+        .faq-question {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .contact-box-floating {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
+        }
+
+        .payment-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .payment-box {
+            background: rgba(0,0,0,0.4);
+            border: 2px dashed var(--primary);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 500px;
+            margin: 20px auto 0;
+        }
+
+        .steps {
+            text-align: right;
+            margin: 20px auto;
+            max-width: 600px;
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .steps li {
+            margin: 10px 0;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .steps li b {
+            color: var(--primary);
+        }
+
+        .fib-link {
+            display: block;
+            background: #000;
+            border: 1px solid var(--accent-green);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .fib-link:hover {
+            background: rgba(16, 185, 129, 0.1);
+            transform: scale(1.02);
+        }
+
+        .fib-number {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--accent-green);
+            letter-spacing: 2px;
+        }
+
+        .fib-hint {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .reviews-slider-container {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .review-slide {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+            text-align: center;
+            width: 100%;
+        }
+
+        .review-slide.active {
+            display: block;
+        }
+
+        .review-stars {
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .review-text-lg {
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-author-lg {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .add-review-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 15px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Telegram Button -->
+    <a href="https://t.me/ind4d?text=سڵاو،%20دەمەوێت%20پرسیار%20بکەم%20یان%20ئەکاونتێک%20حێجز%20بکەم" target="_blank" class="floating-telegram" title="پەیوەندی لە تێلیگرام">
+        💬
+    </a>
+
+    <!-- Live Purchase Toast Notification -->
+    <div class="live-toast" id="liveToast">
+        <div class="toast-icon">⚡</div>
+        <div class="toast-text">
+            <h4 id="toastUser">کەسێک لە هەولێر</h4>
+            <p id="toastAction">پاکێجی 200k ی کڕی و حێجز کرد!</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">⚡ یاریکۆنکان | Yarikonkan</a>
+            <ul class="nav-links">
+                <li><a href="#packages">پاکێجەکان</a></li>
+                <li><a href="#payment">چۆنیەتی کڕین</a></li>
+                <li><a href="#reviews">ڕای کڕیاران</a></li>
+                <li><a href="#faq">پرسە باوەکان</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="urgent-banner">
+        <p>🚨 <b>ئاگاداری گرنگ:</b> ئەکاونتەکانی 200k یەکجار خێرا دەفرۆشرێن! هەر ئێستا <span>بۆ حێجزکردن و هەر پرسیارێک</span> پەیوەندیمان پێوە بکە 💬</p>
+    </div>
+
+    <section class="hero">
+        <h1>فرۆشگای یاریکۆنکان</h1>
+        <p>خێرا‌ترین، متمانەپێکراوترین و هەرزانترین شوێن بۆ دابینکردنی کۆین و ئەکاونتی تایبەت بە یارییەکان.</p>
+        <a href="https://t.me/ind4d?text=سڵاو،%20هەر%20ئێستا%20پرسیارێکم%20هەیە%20یان%20دەمەوێت%20ئەکاونتێک%20حێجز%20بکەم" target="_blank" class="btn btn-telegram" style="max-width: 320px; margin: 0 auto; font-size: 18px;">💬 هەر پرسیارێکت هەیە؟ نامە بنێرە</a>
+    </section>
+
+    <!-- Features / Trust Badges Bar -->
+    <div class="features-bar">
+        <div class="feature-box">
+            <span>⚡</span>
+            <div>
+                <h5>گەیاندنی خێرا</h5>
+                <div>لە ماوەی ٢ بۆ ٥ خولەکدا</div>
+            </div>
+        </div>
+        <div class="feature-box">
+            <span>🛡️</span>
+            <div>
+                <h5>متمانەی تەواو</h5>
+                <div>سەد لە سەد پارێزراو</div>
+            </div>
+        </div>
+        <div class="feature-box">
+            <span>💬</span>
+            <div>
+                <h5>پشتیوانی ٢٤/٧</h5>
+                <div>هەمیشە لە خزمەتتداوین</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title" id="packages">📦 پاکێجەکان و کانزای کۆین</h2>
+        <div class="grid-cards">
+            <div class="card" style="border-color: var(--accent-purple);">
+                <div class="card-badge" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);">پڕخواستترین 🔥</div>
+                <h3>200k Coins + 3 Gifts</h3>
+                
+                <div class="live-stock-box">
+                    <span>⚠️ تەنها <b>3 ئەکاونت</b> لەم بەشە ماوە!</span>
+                    <div class="stock-pulse"></div>
+                </div>
+
+                <div class="package-note">
+                    📌 <b>تێبینی:</b> ئەم پاکێجە فرۆشتنی ئەکاونتە؛ ئەکاونتەکە خۆی ئۆفەری کریوە، بڕی <b>200k کۆین</b> و <b>3 سەقەر (Gifts)</b> تێدایە. <br>
+                    ⚡ <b>بۆ حێجزکردن:</b> ئەکاونتەکان زوو تەواو دەبن، پێشوەختە لە تێلیگرام نامە بنێرە!
+                </div>
+
+                <ul class="feature-list">
+                    <li>🔹 <b>جۆری فرۆشتن:</b> ئەکاونتی ئۆفەرکراو</li>
+                    <li>🔹 <b>بڕی کۆین:</b> 200,000 Coins</li>
+                    <li>🔹 <b>دیارییەکان:</b> 3 سەقەر (Gifts)</li>
+                    <li>🔹 <b>بارودۆخ:</b> ئەکاونتی نوێ بە بەردەوامی بەردەستە</li>
+                </ul>
+                <div class="price-tag">9,000 دینار</div>
+                <a href="https://t.me/ind4d?text=سڵاو،%20دەمەوێت%20ئەکاونتی%20پاکێجی%20200k%20حێجز%20بکەم%20یان%20بکری" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--accent-purple), #7c3aed); color: #fff;">بۆ کڕین و حێجزکردن کلیک بکە</a>
+            </div>
+
+            <div class="card">
+                <div class="card-badge">کانی سەرەتایی</div>
+                <h3>Basic Mine</h3>
+                <ul class="feature-list">
+                    <li>🔹 <b>کۆینی سەرەتایی:</b> 211,058 Coins</li>
+                    <li>🔹 <b>وەرگرتنی دەستبەجێ:</b> 61,898 Coins</li>
+                    <li>🔹 <b>چێکی ڕۆژانە:</b> 6,780 Coins</li>
+                    <li>🔹 <b>تایبەتمەندی:</b> تابلۆی تایبەت و چات</li>
+                </ul>
+                <div class="price-tag">7,500 دینار <span style="font-size: 14px; color: var(--text-muted);">/ ٣٠ ڕۆژ</span></div>
+                <a href="https://t.me/ind4d?text=سڵاو،%20پرسیارم%20هەیە%20لەسەر%20پاکێجی%20Basic%20Mine" target="_blank" class="btn">پرسیار و کڕین</a>
+            </div>
+
+            <div class="card">
+                <div class="card-badge" style="background: rgba(2, 132, 199, 0.15); color: var(--accent-blue);">کانی ناوەند</div>
+                <h3>Intermediate Mine</h3>
+                <ul class="feature-list">
+                    <li>🔹 <b>کۆی گشتی داهات:</b> 2,410,980 Coins <br><small>(250% Coin Return)</small></li>
+                    <li>🔹 <b>وەرگرتنی دەستبەجێ:</b> 771,480 Coins</li>
+                    <li>🔹 <b>چێکی ڕۆژانە:</b> 54,650 Coins</li>
+                    <li>🔹 <b>تایبەتمەندی:</b> باج و چات بابل تایبەت</li>
+                </ul>
+                <div class="price-tag">70,000 دینار <span style="font-size: 14px; color: var(--text-muted);">/ ٣٠ ڕۆژ</span></div>
+                <a href="https://t.me/ind4d?text=سڵاو،%20دەتوانن%20وردەکاری%20زیاترم%20پێبڵێن%20لەسەر%20Intermediate%20Mine؟" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--accent-blue), #0369a1); color: #fff;">پرسیار و کڕین</a>
+            </div>
+        </div>
+
+        <div class="contact-box-floating" id="contact-us">
+            <h2 style="color: var(--primary); margin-bottom: 12px; font-size: 22px;">💬 هەر پرسیارێک یان داواکارییەکت هەیە؟</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 20px; font-size: 15px;">
+                ئەگەر پرسیارێكت هەیە، یان دەتەوێت ئەکاونتێک بۆ خۆت حێجز بکەیت پێش ئەوەی تەواو ببێت، تیمی پشتگیری 24 کاتژمێر لە ئامادەباشیدایە بۆ وەڵامدانەوەت!
+            </p>
+            <a href="https://t.me/ind4d?text=سڵاو،%20پرسیارێکم%20هەیە%20یان%20دەمەوێت%20ئەکاونتێکم%20بۆ%20حێجز%20بکەن" target="_blank" class="btn btn-telegram" style="max-width: 320px; margin: 0 auto; font-size: 17px;">
+                🚀 پەیوەندی پێمانەوە لە تێلیگرام (@ind4d)
+            </a>
+        </div>
+
+        <div class="payment-section" id="payment">
+            <h2 style="color: var(--primary); margin-bottom: 10px;">💳 چۆنیەتی پارەدان و ناردنی پارە (FIB)</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">بەهۆی سیستمی بانکییەوە، سەرەتا پارەکە دەگوازیتەوە و پاشان وەصڵەکەی بۆ ئێمە دەنێریت.</p>
+            
+            <ul class="steps">
+                <li>١. ئەپی <b>FIB</b> لە مۆبایلەکەت بکەرەوە.</li>
+                <li>٢. ژمارەی هەژماری خوارەوە کۆپی بکە و پارەکە بنێرە.</li>
+                <li>٣. سکرینشۆتی وەصڵەکە بگرە و لە تێلیگرام بۆمان بنێرە.</li>
+            </ul>
+
+            <div class="payment-box">
+                <div style="font-size: 15px; color: var(--text-main); font-weight: 700; margin-bottom: 5px;">ژمارەی هەژماری FIB (کلیک بکە بۆ کۆپیکردن):</div>
+                
+                <div class="fib-link" onclick="copyFIB('7517936978')">
+                    <div class="fib-number" id="fib-num">7517936978</div>
+                    <div class="fib-hint" id="fib-hint-text">👉 کلیک لێرە بکە بۆ کۆپیکردنی ژمارە</div>
+                </div>
+
+                <a href="https://t.me/ind4d?text=سڵاو،%20پارەم%20نارد%20و%20ئەمەش%20وەصڵی%20FIB" target="_blank" class="btn btn-telegram" style="margin-top: 15px;">
+                    📤 ناردنی وەصڵ بۆ تێلیگرام (@ind4d)
+                </a>
+            </div>
+        </div>
+
+        <div class="faq-section" id="faq">
+            <h2 style="color: var(--primary); margin-bottom: 20px; font-size: 22px; text-align: right;">❓ پرسیارە دووبارەکان (FAQ)</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">چۆن دەتوانم ئەکاونتی 200k حێجز بکەم؟</div>
+                <div class="faq-answer">دەتوانیت ڕاستەوخۆ لە ڕێگەی دوگمەی تێلیگرامەوە نامە بنێریت و داوای حێجزکردن بکەیت پێش ئەوەی ئەکاونتەکان تەواو ببن.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">دوای ناردنی پارە بە FIB، چەندە دەخایەنێت تا ئەکاونتەکەم پێ بگات؟</div>
+                <div class="faq-answer">لە کاتی ناردنی وەصڵی پارەدان لە تێلیگرام، زۆرترین ماوەی چاوەڕوانی تەنها 2 بۆ 5 خولەکە و زانیارییەکانت پێ دەگات.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">ئایا ئەکاونتەکان سەلامەت و متمانەپێکراون؟</div>
+                <div class="faq-answer">بەڵێ، سەد لە سەد متمانەپێکراون و زیاتر لە سەدان کڕیاری ڕازی هەن کە پشتڕاستی دەکەنەوە.</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="reviews" style="margin-top: 50px;">⭐ ڕای کڕیاران و متمانە</h2>
+        
+        <div class="reviews-slider-container" id="sliderContainer">
+            <div class="review-slide active">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text-lg">"برا گیان تکایە ئەکاونتەکانی 200k زیاتر بکە! هەر کە دادەنێیت خێرا تەواو دەبن، زۆر سوپاس بۆ نرخە خۆشەکانت."</div>
+                <div class="review-author-lg">👤 میران بەختیار (سلێمانی)</div>
+            </div>
+            <div class="review-slide">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text-lg">"کاکە ئەکاونتی 200k یت نایابە، تکایە دانەیەکم بۆ حێجز بکە تا پارەکەی دەگاتە دەستم!"</div>
+                <div class="review-author-lg">👤 دانا ئەحمەد (هەولێر)</div>
+            </div>
+            <div class="review-slide">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text-lg">"زۆر لەچاو شوێنەکانی تر خێراتر ئەکاونتی 200k دابین دەکەیت، بەڵام تکایە ڕۆژانە بڕی زۆرتر لێبکە."</div>
+                <div class="review-author-lg">👤 کاروان سلێمانی</div>
+            </div>
+            <div class="review-slide">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text-lg">"دەستت خۆش، تکایە ئەکاونت بە حێجزیش بفرۆشە چونکە زوو دەفرۆشرێن و پێشوەختە دەمەوێت دانەیەکم بۆ بگری."</div>
+                <div class="review-author-lg">👤 زریان مەحموود</div>
+            </div>
+            <div class="review-slide">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text-lg">"ئەکاونتەکانی 200k زۆر خاوەنی خێرایین، تکایە ژمارەی ئەکاونتە بەردەستەکان لە ڕۆژێکدا زیاد بکە."</div>
+                <div class="review-author-lg">👤 ئارام سەعید (دهۆک)</div>
+            </div>
+        </div>
+
+        <div class="add-review-box">
+            <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 18px; text-align: right;">✍️ تۆش رای خۆت لەسەر فرۆشگا بنووسە</h3>
+            <form id="reviewForm" onsubmit="addNewReview(event)">
+                <div class="form-group">
+                    <label for="reviewerName">ناوی خۆت یاخود شار:</label>
+                    <input type="text" id="reviewerName" class="form-control" placeholder="بۆ نموونە: ئاکۆ سلێمانی" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewRating">هەڵسەنگاندن (ئەستێرە):</label>
+                    <select id="reviewRating" class="form-control">
+                        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (نایاب)</option>
+                        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (باشە)</option>
+                        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (سەد لە سەد متمانەپێکراو)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reviewText">بۆچوون و ئەزموونی خۆت:</label>
+                    <textarea id="reviewText" class="form-control" rows="3" placeholder="داوای ئەکاونتی زیاتر بکە یان داوای حێجزکردن..." required></textarea>
+                </div>
+                <button type="submit" class="btn">ناردنی ڕای خۆت 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>هەموو مافێک پارێزراوە بۆ © 2026 فرۆشگای یاریکۆنکان (Yarikonkan)</p>
+    </footer>
+
+    <script>
+        function copyFIB(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                const hint = document.getElementById('fib-hint-text');
+                hint.innerText = "✅ ژمارەی هەژمار کۆپی کرا!";
+                hint.style.color = "#10b981";
+                setTimeout(function() {
+                    hint.innerText = "👉 کلیک لێرە بکە بۆ کۆپیکردنی ژمارە";
+                    hint.style.color = "#9ca3af";
+                }, 3000);
+            });
+        }
+
+        let currentIndex = 0;
+        let slides = document.querySelectorAll('.review-slide');
+
+        setInterval(() => {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }, 5000);
+
+        // Live Purchase Toast Simulation
+        const buyers = [
+            {name: "میران لە سلێمانی", action: "پاکێجی 200k ی کڕی! 🔥"},
+            {name: "دانا لە هەولێر", action: "کانی 200k ی حێجز کرد! ⚡"},
+            {name: "ئارام لە دهۆک", action: "Basic Mine ی چالاک کرد! 💎"},
+            {name: "کاروان لە هەڵەبجە", action: "Intermediate Mine ی کڕی! 🚀"},
+            {name: "شادمان لە کەرکووک", action: "پاکێجی 200k ی سەرکەوتووانە وەرگرت! ⭐"}
+        ];
+
+        function showLiveToast() {
+            const toast = document.getElementById('liveToast');
+            const userEl = document.getElementById('toastUser');
+            const actionEl = document.getElementById('toastAction');
+
+            const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
+            userEl.innerText = randomBuyer.name;
+            actionEl.innerText = randomBuyer.action;
+
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Show toast every 8 seconds
+        setInterval(showLiveToast, 8000);
+        setTimeout(showLiveToast, 3000); // First show after 3 seconds
+
+        function addNewReview(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('reviewerName').value;
+            const rating = document.getElementById('reviewRating').value;
+            const text = document.getElementById('reviewText').value;
+
+            const sliderContainer = document.getElementById('sliderContainer');
+
+            const newSlide = document.createElement('div');
+            newSlide.className = 'review-slide';
+            newSlide.innerHTML = `
+                <div class="review-stars">${rating}</div>
+                <div class="review-text-lg">"${text}"</div>
+                <div class="review-author-lg">👤 ${name}</div>
+            `;
+
+            sliderContainer.appendChild(newSlide);
+            slides = document.querySelectorAll('.review-slide');
+
+            slides[currentIndex].classList.remove('active');
+            currentIndex = slides.length - 1;
+            slides[currentIndex].classList.add('active');
+
+            document.getElementById('reviewForm').reset();
+            alert('سوپاس بۆ ڕای خۆت! بۆچوونەکەت بە سەرکەوتوویی زیادکرا.');
+        }
+    </script>
+</body>
+</html>
