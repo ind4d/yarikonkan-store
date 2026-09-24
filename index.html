@@ -56,6 +56,9 @@
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .nav-links { display: flex; gap: 20px; list-style: none; }
@@ -78,7 +81,9 @@
             box-shadow: 0 5px 25px rgba(2, 132, 199, 0.6);
             z-index: 9999;
             text-decoration: none;
+            transition: 0.3s;
         }
+        .floating-telegram:hover { transform: scale(1.1); }
 
         .urgent-banner {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(139, 92, 246, 0.15));
@@ -117,22 +122,22 @@
         }
         .card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
-        .discount-badge {
+        .card-badge {
             position: absolute;
             top: 15px;
-            left: 15px;
-            background: #ef4444;
-            color: #fff;
+            right: 15px;
+            background: var(--primary);
+            color: #000;
             padding: 3px 10px;
             border-radius: 10px;
             font-size: 11px;
             font-weight: 700;
         }
 
-        .coin-icon { font-size: 35px; margin-bottom: 10px; }
-        .coin-amount { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 5px; }
-        .vip-exp { font-size: 12px; color: var(--text-muted); margin-bottom: 15px; }
-        .price-box { font-size: 18px; font-weight: 800; color: var(--accent-green); margin-bottom: 15px; }
+        .card-icon { font-size: 40px; margin-bottom: 15px; }
+        .card-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .card-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+        .card-price { font-size: 16px; font-weight: 800; color: var(--accent-green); margin-bottom: 20px; }
 
         .btn {
             display: block;
@@ -151,27 +156,7 @@
         }
         .btn:hover { opacity: 0.9; }
 
-        .payment-section {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 40px;
-            text-align: center;
-        }
-        .payment-row {
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 20px;
-            border-radius: 12px;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        .faq-section {
+        .info-section {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
@@ -179,133 +164,68 @@
             margin-top: 40px;
             text-align: right;
         }
-        .faq-item { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
-        .faq-question { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .faq-answer { font-size: 13px; color: var(--text-muted); }
-
-        .admin-section {
-            background: rgba(15, 23, 42, 0.95);
-            border: 2px dashed var(--primary);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 50px;
-        }
-        .form-group { margin-bottom: 15px; text-align: right; }
-        .form-group label { display: block; margin-bottom: 5px; font-size: 13px; font-weight: 600; }
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 14px;
-        }
-        .admin-item-row {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .info-section h3 { color: var(--primary); margin-bottom: 15px; font-size: 16px; }
+        .info-section p, .info-section li { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+        .info-section ul { padding-right: 20px; }
 
         footer { text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <a href="https://t.me/Ind4d" target="_blank" class="floating-telegram">🤖</a>
+    <a href="https://t.me/Ind4d" target="_blank" class="floating-telegram" title="پەیوەندی لە تێلیگرام">💬</a>
 
     <header>
         <div class="nav-container">
             <a href="#" class="logo">⚡ Yari KonKan Store</a>
             <ul class="nav-links">
                 <li><a href="#packages">پاکێجەکان</a></li>
-                <li><a href="#payment">پارەدان</a></li>
-                <li><a href="#faq">پرسیارەکان</a></li>
-                <li><a href="#admin">ئەدمین پانێڵ</a></li>
+                <li><a href="#info">ڕێنمایی</a></li>
             </ul>
         </div>
     </header>
 
     <div class="urgent-banner">
-        <p>🚨 <b>ئاگاداری:</b> پاکێجەکانی کۆین ڕاستەوخۆ دەگەنە ئەکاونتەکەت. بۆ هەر پرسیارێک پەیوەندیمان پێوە بکە 💬</p>
+        <p>🚨 <b>ئاگاداری:</b> خزمەتگوزارییەکان بە زووترین کات دوای داواکردن جێبەجێ دەکرێن.</p>
     </div>
 
     <section class="hero">
-        <h1>پاکێجەکانی فەرمی وەرگرتنی کۆین</h1>
-        <p>پاکێجە فەرمییەکانی یاری Yari KonKan بە باشترین نرخ بە دیناری عێراقی (IQD).</p>
+        <h1>فڕۆشگای فەرمی یاری Yari KonKan</h1>
+        <p>باشترین و خێراترین خزمەتگوزاری بۆ دابینکردنی پێداویستییەکانی یارییەکەت.</p>
     </section>
 
     <div class="container">
-        <h2 class="section-title" id="packages">🪙 پاکێجەکانی باڵانسی کۆین</h2>
-        <div class="grid-cards" id="packagesContainer"></div>
-
-        <div class="payment-section" id="payment">
-            <h3 style="color: var(--primary); margin-bottom: 15px;">💳 ڕێگاکانی پارەدانی بەردەست</h3>
-            <div class="payment-row">
-                <span>Visa / Mastercard / Google Wallet</span>
-                <span style="color: var(--accent-green);">بەردەستە ✅</span>
+        <h2 class="section-title" id="packages">📦 پاکێجەکان و خزمەتگوزارییەکان</h2>
+        
+        <div class="grid-cards">
+            <!-- نموونەی پاکێج ١ -->
+            <div class="card">
+                <div class="card-badge">باو</div>
+                <div class="card-icon">🪙</div>
+                <div class="card-title">پاکێجی سەرەتایی</div>
+                <div class="card-desc">دابینکردنی بڕی پێویست بۆ دەستپێک</div>
+                <div class="card-price">بۆ نرخ پەیوەندی بکە</div>
+                <a href="https://t.me/Ind4d?text=سڵاو، دەمەوێت لە بارەی پاکێجی سەرەتاییەوە پرسیار بکەم" target="_blank" class="btn">داواکردن لە تێلیگرام</a>
             </div>
-            <div class="payment-row">
-                <span>Cryptocurrency (USDT - TRC20 / ERC20)</span>
-                <span style="color: var(--accent-green);">بەردەستە ✅</span>
+
+            <!-- نموونەی پاکێج ٢ -->
+            <div class="card">
+                <div class="card-badge" style="background: var(--accent-green);">تایبەت</div>
+                <div class="card-icon">💎</div>
+                <div class="card-title">پاکێجی پێشکەوتوو</div>
+                <div class="card-desc">باشترین هەڵبژاردن بۆ یاریزانە چالاکەکان</div>
+                <div class="card-price">بۆ نرخ پەیوەندی بکە</div>
+                <a href="https://t.me/Ind4d?text=سڵاو، دەمەوێت لە بارەی پاکێجی پێشکەوتووەوە پرسیار بکەم" target="_blank" class="btn">داواکردن لە تێلیگرام</a>
             </div>
         </div>
 
-        <div class="faq-section" id="faq">
-            <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 16px;">❓ پرسیارە باوەکان</h3>
-            <div id="faqContainer">
-                <div class="faq-item">
-                    <div class="faq-question">چۆن پاکێجەکان دەگەنە دەستم؟</div>
-                    <div class="faq-answer">دوای هەڵبژاردنی پاکێجەکە و پەیوەندیکردن لە تێلیگرام، ڕاستەوخۆ بۆت جێبەجێ دەکرێت.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Admin Panel -->
-        <div class="admin-section" id="admin">
-            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">⚙️ ئەدمین پانێڵ</h2>
-            
-            <div id="adminLoginBox">
-                <div class="form-group">
-                    <label>پاسوێردی ئەدمین:</label>
-                    <input type="password" id="adminPasswordInput" class="form-control" placeholder="پاسوێرد...">
-                </div>
-                <button onclick="checkAdminLogin()" class="btn" style="background: var(--accent-green); color: #000;">چوونەژوورەوە 🔓</button>
-            </div>
-
-            <div id="adminDashboard" style="display: none;">
-                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: var(--primary); font-size: 15px; margin-bottom: 10px;">➕ زیادکردنی پاکێجی نوێ</h3>
-                    <div class="form-group">
-                        <label>ڕێژەی داشکاندن (بۆ نموونە: 5% OFF یان بەتاڵ):</label>
-                        <input type="text" id="newDiscount" class="form-control" placeholder="5% OFF">
-                    </div>
-                    <div class="form-group">
-                        <label>بڕی کۆین (بۆ نموونە: 16875):</label>
-                        <input type="text" id="newCoins" class="form-control" placeholder="16875">
-                    </div>
-                    <div class="form-group">
-                        <label>بڕی VIP Exp (بۆ نموونە: 99 VIP Exp):</label>
-                        <input type="text" id="newVip" class="form-control" placeholder="99 VIP Exp">
-                    </div>
-                    <div class="form-group">
-                        <label>نرخ بە دینار (بۆ نموونە: IQD 1,300):</label>
-                        <input type="text" id="newPrice" class="form-control" placeholder="IQD 1,300">
-                    </div>
-                    <button onclick="addNewPackage()" class="btn" style="background: var(--primary); color: #000;">زیادکردنی پاکێج 🚀</button>
-                </div>
-
-                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: #fff; font-size: 14px; margin-bottom: 10px;">📋 بەڕێوەبردنی پاکێجەکان</h3>
-                    <div id="adminPackagesList"></div>
-                </div>
-
-                <button onclick="adminLogout()" class="btn" style="background: #374151; color: #fff;">چوونە دەرەوە 🔒</button>
-            </div>
+        <div class="info-section" id="info">
+            <h3>ℹ️ چۆنیەتی داواکردن و کڕین</h3>
+            <ul>
+                <div>١. پاکێجی مەبەست دیاری بکە و دوگمەی داواکردن سەرکوتە.</div>
+                <div>٢. ڕاستەوخۆ دەگوازرێیتەوە بۆ تێلیگرام بۆ لای پشتیوانی.</div>
+                <div>٣. دوای ناردنی پێدانی پارە، داواکارییەکەت لە کاتێکی کەمدا جێبەجێ دەکرێت.</div>
+            </ul>
         </div>
     </div>
 
@@ -313,129 +233,5 @@
         <p>هەموو مافێک پارێزراوە بۆ © 2026 Yari KonKan Store</p>
     </footer>
 
-    <script>
-        const ADMIN_PASSWORD = "Yarikonkan@Admin2026";
-        const TG_USERNAME = "Ind4d";
-
-        const defaultData = {
-            packages: [
-                {discount: "", coins: "16,875", vip: "99 VIP Exp", price: "IQD 1,300"},
-                {discount: "5% OFF", coins: "88,425", vip: "499 VIP Exp", price: "IQD 6,550"},
-                {discount: "9% OFF", coins: "184,725", vip: "999 VIP Exp", price: "IQD 13,100"},
-                {discount: "11% OFF", coins: "377,775", vip: "1999 VIP Exp", price: "IQD 26,200"},
-                {discount: "13% OFF", coins: "964,350", vip: "4999 VIP Exp", price: "IQD 65,500"},
-                {discount: "17% OFF", coins: "2,009,025", vip: "9999 VIP Exp", price: "IQD 131,000"}
-            ]
-        };
-
-        function getStoreData() {
-            const data = localStorage.getItem('yarikonkan_lootbar_store_v2');
-            return data ? JSON.parse(data) : defaultData;
-        }
-
-        function saveStoreData(data) {
-            localStorage.setItem('yarikonkan_lootbar_store_v2', JSON.stringify(data));
-            renderSite();
-        }
-
-        function renderSite() {
-            const data = getStoreData();
-            const container = document.getElementById('packagesContainer');
-            container.innerHTML = "";
-
-            data.packages.forEach((pkg, index) => {
-                let directLink = `https://t.me/${TG_USERNAME}?text=${encodeURIComponent('سڵاو، دەمەوێت ئەم پاکێجەی کۆینی یاریکۆنکان بکڕم: ' + pkg.coins + ' کۆین بە نرخى ' + pkg.price)}`;
-                
-                let html = `<div class="card">`;
-                if(pkg.discount) {
-                    html += `<div class="discount-badge">${pkg.discount}</div>`;
-                }
-                html += `
-                        <div class="coin-icon">🪙</div>
-                        <div class="coin-amount">${pkg.coins}</div>
-                        <div class="vip-exp">${pkg.vip}</div>
-                        <div class="price-box">${pkg.price}</div>
-                        <a href="${directLink}" target="_blank" class="btn">کڕین لە تێلیگرام</a>
-                    </div>
-                `;
-                container.innerHTML += html;
-            });
-
-            renderAdminList();
-        }
-
-        function renderAdminList() {
-            const data = getStoreData();
-            const list = document.getElementById('adminPackagesList');
-            list.innerHTML = "";
-
-            data.packages.forEach((pkg, index) => {
-                list.innerHTML += `
-                    <div class="admin-item-row">
-                        <div>
-                            <strong style="color: #fff;">${pkg.coins} کۆین</strong> - <span style="color: var(--accent-green);">${pkg.price}</span>
-                        </div>
-                        <button onclick="deletePackage(${index})" class="btn" style="padding: 5px 10px; font-size: 12px; width: auto; background: var(--accent-red); color: #fff;">سڕینەوە 🗑️</button>
-                    </div>
-                `;
-            });
-        }
-
-        function addNewPackage() {
-            const discount = document.getElementById('newDiscount').value;
-            const coins = document.getElementById('newCoins').value;
-            const vip = document.getElementById('newVip').value;
-            const price = document.getElementById('newPrice').value;
-
-            if(!coins || !price) {
-                alert('تکایە لانیکەم بڕی کۆین و نرخ بنووسە!');
-                return;
-            }
-
-            let data = getStoreData();
-            data.packages.push({discount, coins, vip, price});
-            saveStoreData(data);
-
-            document.getElementById('newDiscount').value = "";
-            document.getElementById('newCoins').value = "";
-            document.getElementById('newVip').value = "";
-            document.getElementById('newPrice').value = "";
-            alert('پاکێجەکە سەرکەوتووانە زیاد کرا!');
-        }
-
-        function deletePackage(index) {
-            if(confirm('دڵنیایت لە سڕینەوەی ئەم پاکێجە؟')) {
-                let data = getStoreData();
-                data.packages.splice(index, 1);
-                saveStoreData(data);
-            }
-        }
-
-        function checkAdminLogin() {
-            const pass = document.getElementById('adminPasswordInput').value.trim();
-            if(pass === ADMIN_PASSWORD) {
-                sessionStorage.setItem('yarikonkan_admin_logged', 'true');
-                document.getElementById('adminLoginBox').style.display = 'none';
-                document.getElementById('adminDashboard').style.display = 'block';
-                alert('بە سەرکەوتوویی چوویە ژوورەوە بۆ ئەدمین پانێڵ!');
-            } else {
-                alert('پاسوێردەکە هەڵەیە!');
-            }
-        }
-
-        function adminLogout() {
-            sessionStorage.removeItem('yarikonkan_admin_logged');
-            document.getElementById('adminDashboard').style.display = 'none';
-            document.getElementById('adminLoginBox').style.display = 'block';
-        }
-
-        window.onload = function() {
-            renderSite();
-            if(sessionStorage.getItem('yarikonkan_admin_logged') === 'true') {
-                document.getElementById('adminLoginBox').style.display = 'none';
-                document.getElementById('adminDashboard').style.display = 'block';
-            }
-        };
-    </script>
 </body>
 </html>
