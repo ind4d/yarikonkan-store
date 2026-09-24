@@ -23,6 +23,9 @@
 
         body {
             background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.08) 0%, transparent 40%);
             color: var(--text-main);
             min-height: 100vh;
             line-height: 1.6;
@@ -56,7 +59,7 @@
         }
 
         .nav-links { display: flex; gap: 20px; list-style: none; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
         .floating-telegram {
@@ -77,8 +80,20 @@
             text-decoration: none;
         }
 
-        .hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
-        .hero h1 { font-size: 30px; font-weight: 800; margin-bottom: 15px; color: #fff; }
+        .urgent-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(139, 92, 246, 0.15));
+            border: 1px dashed var(--primary);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 20px auto;
+            max-width: 1100px;
+            text-align: center;
+        }
+        .urgent-banner p { color: #fff; font-size: 14px; font-weight: 700; }
+        .urgent-banner span { color: var(--primary); }
+
+        .hero { text-align: center; padding: 30px 20px 20px; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; color: #fff; }
         .hero p { color: var(--text-muted); font-size: 14px; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
@@ -97,12 +112,15 @@
             padding: 25px;
             position: relative;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
         }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
         .discount-badge {
             position: absolute;
             top: 15px;
-            right: 15px;
+            left: 15px;
             background: #ef4444;
             color: #fff;
             padding: 3px 10px;
@@ -129,9 +147,11 @@
             font-size: 14px;
             border: none;
             cursor: pointer;
+            transition: 0.3s;
         }
+        .btn:hover { opacity: 0.9; }
 
-        .payment-methods-box {
+        .payment-section {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
@@ -139,7 +159,6 @@
             margin-top: 40px;
             text-align: center;
         }
-
         .payment-row {
             background: rgba(0,0,0,0.4);
             border: 1px solid rgba(255,255,255,0.1);
@@ -152,6 +171,18 @@
             font-size: 14px;
         }
 
+        .faq-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 40px;
+            text-align: right;
+        }
+        .faq-item { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
+        .faq-question { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .faq-answer { font-size: 13px; color: var(--text-muted); }
+
         .admin-section {
             background: rgba(15, 23, 42, 0.95);
             border: 2px dashed var(--primary);
@@ -159,7 +190,6 @@
             padding: 30px;
             margin-top: 50px;
         }
-
         .form-group { margin-bottom: 15px; text-align: right; }
         .form-group label { display: block; margin-bottom: 5px; font-size: 13px; font-weight: 600; }
         .form-control {
@@ -171,7 +201,6 @@
             color: #fff;
             font-size: 14px;
         }
-
         .admin-item-row {
             background: rgba(255, 255, 255, 0.03);
             padding: 12px;
@@ -194,21 +223,27 @@
             <a href="#" class="logo">⚡ Yari KonKan Store</a>
             <ul class="nav-links">
                 <li><a href="#packages">پاکێجەکان</a></li>
+                <li><a href="#payment">پارەدان</a></li>
+                <li><a href="#faq">پرسیارەکان</a></li>
                 <li><a href="#admin">ئەدمین پانێڵ</a></li>
             </ul>
         </div>
     </header>
 
+    <div class="urgent-banner">
+        <p>🚨 <b>ئاگاداری:</b> پاکێجەکانی کۆین ڕاستەوخۆ دەگەنە ئەکاونتەکەت. بۆ هەر پرسیارێک پەیوەندیمان پێوە بکە 💬</p>
+    </div>
+
     <section class="hero">
-        <h1 id="heroTitle">پاکێجەکانی فەرمی وەرگرتنی کۆین[span_0](start_span)[span_0](end_span)</h1>
-        <p>هەموو پاکێجە فەرمییەکانی یاری Yari KonKan بە باشترین نرخ بە دیناری عێراقی (IQD)[span_1](start_span)[span_1](end_span).</p>
+        <h1>پاکێجەکانی فەرمی وەرگرتنی کۆین</h1>
+        <p>پاکێجە فەرمییەکانی یاری Yari KonKan بە باشترین نرخ بە دیناری عێراقی (IQD).</p>
     </section>
 
     <div class="container">
         <h2 class="section-title" id="packages">🪙 پاکێجەکانی باڵانسی کۆین</h2>
         <div class="grid-cards" id="packagesContainer"></div>
 
-        <div class="payment-methods-box">
+        <div class="payment-section" id="payment">
             <h3 style="color: var(--primary); margin-bottom: 15px;">💳 ڕێگاکانی پارەدانی بەردەست</h3>
             <div class="payment-row">
                 <span>Visa / Mastercard / Google Wallet</span>
@@ -217,6 +252,16 @@
             <div class="payment-row">
                 <span>Cryptocurrency (USDT - TRC20 / ERC20)</span>
                 <span style="color: var(--accent-green);">بەردەستە ✅</span>
+            </div>
+        </div>
+
+        <div class="faq-section" id="faq">
+            <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 16px;">❓ پرسیارە باوەکان</h3>
+            <div id="faqContainer">
+                <div class="faq-item">
+                    <div class="faq-question">چۆن پاکێجەکان دەگەنە دەستم؟</div>
+                    <div class="faq-answer">دوای هەڵبژاردنی پاکێجەکە و پەیوەندیکردن لە تێلیگرام، ڕاستەوخۆ بۆت جێبەجێ دەکرێت.</div>
+                </div>
             </div>
         </div>
 
@@ -229,7 +274,7 @@
                     <label>پاسوێردی ئەدمین:</label>
                     <input type="password" id="adminPasswordInput" class="form-control" placeholder="پاسوێرد...">
                 </div>
-                <button onclick="checkAdminLogin()" class="btn" style="background: var(--accent-green); color: #fff;">چوونەژوورەوە 🔓</button>
+                <button onclick="checkAdminLogin()" class="btn" style="background: var(--accent-green); color: #000;">چوونەژوورەوە 🔓</button>
             </div>
 
             <div id="adminDashboard" style="display: none;">
@@ -284,12 +329,12 @@
         };
 
         function getStoreData() {
-            const data = localStorage.getItem('yarikonkan_lootbar_store');
+            const data = localStorage.getItem('yarikonkan_lootbar_store_v2');
             return data ? JSON.parse(data) : defaultData;
         }
 
         function saveStoreData(data) {
-            localStorage.setItem('yarikonkan_lootbar_store', JSON.stringify(data));
+            localStorage.setItem('yarikonkan_lootbar_store_v2', JSON.stringify(data));
             renderSite();
         }
 
@@ -301,9 +346,7 @@
             data.packages.forEach((pkg, index) => {
                 let directLink = `https://t.me/${TG_USERNAME}?text=${encodeURIComponent('سڵاو، دەمەوێت ئەم پاکێجەی کۆینی یاریکۆنکان بکڕم: ' + pkg.coins + ' کۆین بە نرخى ' + pkg.price)}`;
                 
-                let html = `
-                    <div class="card">
-                `;
+                let html = `<div class="card">`;
                 if(pkg.discount) {
                     html += `<div class="discount-badge">${pkg.discount}</div>`;
                 }
